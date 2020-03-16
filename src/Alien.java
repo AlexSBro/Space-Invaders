@@ -27,15 +27,15 @@ public class Alien extends GameObject {
         if (this.moveRight)
             this.x += 2;    //this.speed;
 
-        if (this.x > Board.BOARD_WIDTH) {
+        if (this.x > Board.BOARD_WIDTH - this.width) {
                 this.moveLeft = true;
                 this.moveRight = false;
-                this.y += 5;
+                this.y += this.height + 10;
         }
         if (this.x < 0) {
                 this.moveRight = true;
                 this.moveLeft = false;
-                this.y += 5;
+                this.y += this.height + 10;
         }
 
     }
