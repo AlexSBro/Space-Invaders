@@ -13,16 +13,13 @@ import java.awt.image.*;
 import java.util.ArrayList;
 
 
-public class Board  extends JPanel implements Runnable, MouseListener
-{
-    boolean ingame = true;
+public class Board  extends JPanel implements Runnable {
+    boolean running = true;
 
     private Dimension dimension;
     public  static int BOARD_WIDTH = 640;
     public  static int BOARD_HEIGHT = 640;
-    int x = 0;
-    BufferedImage img;
-    String message = "Click Board to Start";
+
     private Thread animator;
 
     private ArrayList<GameObject> gameObjects = new ArrayList<>();
@@ -31,7 +28,6 @@ public class Board  extends JPanel implements Runnable, MouseListener
 
     public Board() {
         addKeyListener(new TAdapter());
-        addMouseListener(this);
         setFocusable(true);
         dimension = new Dimension(BOARD_WIDTH, BOARD_HEIGHT);
 
@@ -39,7 +35,7 @@ public class Board  extends JPanel implements Runnable, MouseListener
 
         setBackground(Color.black);
 
-        if (animator == null || !ingame) {
+        if (animator == null || !running) {
             animator = new Thread(this);
             animator.start();
         }
@@ -103,31 +99,6 @@ public class Board  extends JPanel implements Runnable, MouseListener
 
 
         }
-
-    }
-
-
-
-
-    public void mousePressed(MouseEvent e) {
-        int x = e.getX();
-        int y = e.getY();
-
-    }
-
-    public void mouseReleased(MouseEvent e) {
-
-    }
-
-    public void mouseEntered(MouseEvent e) {
-
-    }
-
-    public void mouseExited(MouseEvent e) {
-
-    }
-
-    public void mouseClicked(MouseEvent e) {
 
     }
 
