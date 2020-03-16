@@ -6,7 +6,7 @@ public class Starter extends JFrame {
         add(new Board());
         setTitle("Board");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(500, 500);
+        setSize(Board.BOARD_WIDTH, Board.BOARD_HEIGHT);
         setLocationRelativeTo(null);
         setVisible(true);
         setResizable(false);

@@ -9,64 +9,52 @@ import java.awt.Graphics;
 import java.awt.Toolkit;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import javax.swing.Timer;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Random;
 
-import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-import javax.imageio.*;
 import java.awt.image.*;
-import java.io.*;
+import java.util.ArrayList;
 
 
 public class Board  extends JPanel implements Runnable, MouseListener
 {
     boolean ingame = true;
-    private Dimension d;
-    int BOARD_WIDTH=500;
-    int BOARD_HEIGHT=500;
+
+    private Dimension dimension;
+    public  static int BOARD_WIDTH = 640;
+    public  static int BOARD_HEIGHT = 640;
     int x = 0;
     BufferedImage img;
     String message = "Click Board to Start";
     private Thread animator;
 
-    Player p;
+    private ArrayList<GameObject> gameObjects = new ArrayList<>();
 
-    Alien[] a = new Alien[10];
+    Player player;
 
-    public Board()
-    {
+    public Board() {
         addKeyListener(new TAdapter());
         addMouseListener(this);
         setFocusable(true);
-        d = new Dimension(BOARD_WIDTH, BOARD_HEIGHT);
+        dimension = new Dimension(BOARD_WIDTH, BOARD_HEIGHT);
 
-        p = new Player(BOARD_WIDTH/2, BOARD_HEIGHT-60, 5);
+        player = new Player(BOARD_WIDTH/2, BOARD_HEIGHT-60, 5);
+        gameObjects.add(player);
 
         int ax = 10;
         int ay = 10;
 
-        for (int i = 0; i < a.length; i++) {
-            a[i] = new Alien(ax, ay, 10);
+        for (int i = 0; i < 10; i++) {
+            Alien alien = new Alien(ax, ay, 10);
             ax += 40;
             if (i == 4) {
                 ax = 10;
                 ay += 40;
             }
+            gameObjects.add(alien);
         }
 
         setBackground(Color.black);
 
-           /*
-             try {
-                img = ImageIO.read(this.getClass().getResource("mount.jpg"));
-            } catch (IOException e) {
-                 System.out.println("Image could not be read");
-            // System.exit(1);
-            }
-            */
         if (animator == null || !ingame) {
             animator = new Thread(this);
             animator.start();
@@ -76,82 +64,33 @@ public class Board  extends JPanel implements Runnable, MouseListener
         setDoubleBuffered(true);
     }
 
-    public void paint(Graphics g)
-    {
-        super.paint(g);
+    public void paint(Graphics graphics) {
+        super.paint(graphics);
 
-        g.setColor(Color.white);
-        g.fillRect(0, 0, d.width, d.height);
-//g.fillOval(x,y,r,r);
+        graphics.setColor(Color.white);
+        graphics.fillRect(0, 0, dimension.width, dimension.height);
+
+//        Font small = new Font("Helvetica", Font.BOLD, 14);
+//        FontMetrics fontMetrics = this.getFontMetrics(small);
+//        graphics.setColor(Color.black);
+//        graphics.setFont(small);
+//        graphics.drawString(message, 10, dimension.height-60);
 
         //represents player
-        g.setColor(Color.red);
-        g.fillRect(p.x, p.y, 20, 20);
-        if (p.moveRight == true)
-            p.x += p.speed;
-        if (p.moveLeft == true)
-            p.x -= p.speed;
-
-        moveAliens();
-
-        for (int i = 0; i < a.length; i++) {
-            g.fillRect(a[i].x, a[i].y, 30, 30);
+        for (GameObject object: gameObjects){
+            object.paint(graphics);
         }
 
-        Font small = new Font("Helvetica", Font.BOLD, 14);
-        FontMetrics metr = this.getFontMetrics(small);
-        g.setColor(Color.black);
-        g.setFont(small);
-        g.drawString(message, 10, d.height-60);
-
-        if (ingame) {
-
-
-
-
-
-            // g.drawImage(img,0,0,200,200 ,null);
-
-
-
-        }
         Toolkit.getDefaultToolkit().sync();
-        g.dispose();
-    }
-
-    public void moveAliens() {
-        for (int i = 0; i < a.length; i++) {
-            if (a[i].moveLeft)
-                a[i].x -= 2;    //a[i].speed;
-
-            if (a[i].moveRight)
-                a[i].x += 2;    //a[i].speed;
-        }
-
-        for (int i = 0; i < a.length; i++) {
-            if (a[i].x > BOARD_WIDTH) {
-                for (int j = 0; j < a.length; j++) {
-                    a[j].moveLeft = true;
-                    a[j].moveRight = false;
-                    a[j].y += 5;
-                }
-            }
-            if (a[i].x < 0) {
-                for (int j = 0; j < a.length; j++) {
-                    a[j].moveRight = true;
-                    a[j].moveLeft = false;
-                    a[j].y += 5;
-                }
-            }
-        }
+        graphics.dispose();
     }
 
     private class TAdapter extends KeyAdapter {
 
         public void keyReleased(KeyEvent e) {
             int key = e.getKeyCode();
-            p.moveRight = false;
-            p.moveLeft = false;
+            player.moveRight = false;
+            player.moveLeft = false;
 
         }
 
@@ -160,10 +99,10 @@ public class Board  extends JPanel implements Runnable, MouseListener
             // message = "Key Pressed: " + e.getKeyCode();
             int key = e.getKeyCode();
             if(key==39){
-                p.moveRight = true;
+                player.moveRight = true;
             }
             if (key == 37){
-                p.moveLeft = true;
+                player.moveLeft = true;
             }
 
 
@@ -197,6 +136,12 @@ public class Board  extends JPanel implements Runnable, MouseListener
 
     }
 
+    public void tick(){
+       for (GameObject object: gameObjects) {
+           object.tick();
+       }
+    }
+
     public void run() {
 
         long beforeTime, timeDiff, sleep;
@@ -207,6 +152,7 @@ public class Board  extends JPanel implements Runnable, MouseListener
                 System.currentTimeMillis();
         while (true) {//infinite loop
             // spriteManager.update();
+            tick();
             repaint();
             try {
                 time += animationDelay;
