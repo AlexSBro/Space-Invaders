@@ -35,6 +35,20 @@ public class Board  extends JPanel implements Runnable, MouseListener
         setFocusable(true);
         dimension = new Dimension(BOARD_WIDTH, BOARD_HEIGHT);
 
+        addGameObjects();
+
+        setBackground(Color.black);
+
+        if (animator == null || !ingame) {
+            animator = new Thread(this);
+            animator.start();
+        }
+
+
+        setDoubleBuffered(true);
+    }
+
+    private void addGameObjects() {
         player = new Player(BOARD_WIDTH/2, BOARD_HEIGHT-60, 5);
         gameObjects.add(player);
 
@@ -50,16 +64,6 @@ public class Board  extends JPanel implements Runnable, MouseListener
             }
             gameObjects.add(alien);
         }
-
-        setBackground(Color.black);
-
-        if (animator == null || !ingame) {
-            animator = new Thread(this);
-            animator.start();
-        }
-
-
-        setDoubleBuffered(true);
     }
 
     public void paint(Graphics graphics) {
@@ -68,13 +72,7 @@ public class Board  extends JPanel implements Runnable, MouseListener
         graphics.setColor(Color.white);
         graphics.fillRect(0, 0, dimension.width, dimension.height);
 
-//        Font small = new Font("Helvetica", Font.BOLD, 14);
-//        FontMetrics fontMetrics = this.getFontMetrics(small);
-//        graphics.setColor(Color.black);
-//        graphics.setFont(small);
-//        graphics.drawString(message, 10, dimension.height-60);
 
-        //represents player
         for (GameObject object: gameObjects){
             object.paint(graphics);
         }
@@ -93,8 +91,7 @@ public class Board  extends JPanel implements Runnable, MouseListener
         }
 
         public void keyPressed(KeyEvent e) {
-//System.out.println( e.getKeyCode());
-            // message = "Key Pressed: " + e.getKeyCode();
+
             int key = e.getKeyCode();
             if(key==39){
                 player.rightKeyPressed = true;
