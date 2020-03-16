@@ -2,14 +2,14 @@ import java.awt.*;
 
 public class Player extends GameObject {
 
-    boolean moveRight;
-    boolean moveLeft;
+    boolean rightKeyPressed;
+    boolean leftKeyPressed;
 
     public Player(int x, int y, int s){
         super(x, y, s);
 
-        moveLeft = false;
-        moveRight = false;
+        leftKeyPressed = false;
+        rightKeyPressed = false;
 
         this.width = 20;
         this.height = 20;
@@ -19,9 +19,24 @@ public class Player extends GameObject {
     public void paint(Graphics graphics){
         graphics.setColor(Color.red);
         graphics.fillRect(this.x, this.y, width, height);
-        if (this.moveRight == true)
+
+    }
+
+    public void tick(){
+        if (this.rightKeyPressed) {
             this.x += this.speed;
-        if (this.moveLeft == true)
+        }
+        if (this.leftKeyPressed && this.x > 0) {
             this.x -= this.speed;
+        }
+
+        if (this.x > Board.BOARD_WIDTH - this.width){
+            this.x = Board.BOARD_WIDTH - this.width;
+        }
+        if (this.x < 0){
+            this.x = 0;
+        }
+
+
     }
 }

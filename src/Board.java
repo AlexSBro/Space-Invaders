@@ -3,8 +3,6 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Toolkit;
 import java.awt.event.KeyAdapter;
@@ -89,8 +87,8 @@ public class Board  extends JPanel implements Runnable, MouseListener
 
         public void keyReleased(KeyEvent e) {
             int key = e.getKeyCode();
-            player.moveRight = false;
-            player.moveLeft = false;
+            player.rightKeyPressed = false;
+            player.leftKeyPressed = false;
 
         }
 
@@ -99,10 +97,10 @@ public class Board  extends JPanel implements Runnable, MouseListener
             // message = "Key Pressed: " + e.getKeyCode();
             int key = e.getKeyCode();
             if(key==39){
-                player.moveRight = true;
+                player.rightKeyPressed = true;
             }
             if (key == 37){
-                player.moveLeft = true;
+                player.leftKeyPressed = true;
             }
 
 
