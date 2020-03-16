@@ -32,6 +32,9 @@ public class Board  extends JPanel implements Runnable, MouseListener
     String message = "Click Board to Start";
     private Thread animator;
 
+    Player p;
+
+    Alien[] a = new Alien[10];
 
     public Board()
     {
@@ -39,6 +42,21 @@ public class Board  extends JPanel implements Runnable, MouseListener
         addMouseListener(this);
         setFocusable(true);
         d = new Dimension(BOARD_WIDTH, BOARD_HEIGHT);
+
+        p = new Player(BOARD_WIDTH/2, BOARD_HEIGHT-60, 5);
+
+        int ax = 10;
+        int ay = 10;
+
+        for (int i = 0; i < a.length; i++) {
+            a[i] = new Alien(ax, ay, 10);
+            ax += 40;
+            if (i == 4) {
+                ax = 10;
+                ay += 40;
+            }
+        }
+
         setBackground(Color.black);
 
            /*
@@ -66,6 +84,20 @@ public class Board  extends JPanel implements Runnable, MouseListener
         g.fillRect(0, 0, d.width, d.height);
 //g.fillOval(x,y,r,r);
 
+        //represents player
+        g.setColor(Color.red);
+        g.fillRect(p.x, p.y, 20, 20);
+        if (p.moveRight == true)
+            p.x += p.speed;
+        if (p.moveLeft == true)
+            p.x -= p.speed;
+
+        moveAliens();
+
+        for (int i = 0; i < a.length; i++) {
+            g.fillRect(a[i].x, a[i].y, 30, 30);
+        }
+
         Font small = new Font("Helvetica", Font.BOLD, 14);
         FontMetrics metr = this.getFontMetrics(small);
         g.setColor(Color.black);
@@ -86,10 +118,40 @@ public class Board  extends JPanel implements Runnable, MouseListener
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
     }
+
+    public void moveAliens() {
+        for (int i = 0; i < a.length; i++) {
+            if (a[i].moveLeft)
+                a[i].x -= 2;    //a[i].speed;
+
+            if (a[i].moveRight)
+                a[i].x += 2;    //a[i].speed;
+        }
+
+        for (int i = 0; i < a.length; i++) {
+            if (a[i].x > BOARD_WIDTH) {
+                for (int j = 0; j < a.length; j++) {
+                    a[j].moveLeft = true;
+                    a[j].moveRight = false;
+                    a[j].y += 5;
+                }
+            }
+            if (a[i].x < 0) {
+                for (int j = 0; j < a.length; j++) {
+                    a[j].moveRight = true;
+                    a[j].moveLeft = false;
+                    a[j].y += 5;
+                }
+            }
+        }
+    }
+
     private class TAdapter extends KeyAdapter {
 
         public void keyReleased(KeyEvent e) {
             int key = e.getKeyCode();
+            p.moveRight = false;
+            p.moveLeft = false;
 
         }
 
@@ -98,7 +160,10 @@ public class Board  extends JPanel implements Runnable, MouseListener
             // message = "Key Pressed: " + e.getKeyCode();
             int key = e.getKeyCode();
             if(key==39){
-
+                p.moveRight = true;
+            }
+            if (key == 37){
+                p.moveLeft = true;
             }
 
 
@@ -137,7 +202,7 @@ public class Board  extends JPanel implements Runnable, MouseListener
         long beforeTime, timeDiff, sleep;
 
         beforeTime = System.currentTimeMillis();
-        int animationDelay = 500;
+        int animationDelay = 5;
         long time =
                 System.currentTimeMillis();
         while (true) {//infinite loop

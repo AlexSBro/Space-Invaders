@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.awt.*;
 
 public class Starter extends JFrame {
 
@@ -16,5 +15,4 @@ public class Starter extends JFrame {
     public static void main(String[] args) {
         new Starter();
     }
-
 }
