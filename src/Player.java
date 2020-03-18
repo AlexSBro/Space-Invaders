@@ -1,12 +1,16 @@
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Player extends GameObject {
 
     boolean rightKeyPressed;
     boolean leftKeyPressed;
+    boolean spacePressed;
 
-    public Player(int x, int y, int s){
-        super(x, y, s);
+    public Player(int x, int y, int s, GameObjectManager gameObjectManager){
+        super(x, y, s, gameObjectManager);
+
+        this.gameObjectManager = gameObjectManager;
 
         leftKeyPressed = false;
         rightKeyPressed = false;
@@ -37,6 +41,10 @@ public class Player extends GameObject {
             this.x = 0;
         }
 
+        if(spacePressed) {
+            gameObjectManager.addToQue(new Projectile(this.x + 8, this.y, 5, gameObjectManager));
+            spacePressed = false;
+        }
 
     }
 }

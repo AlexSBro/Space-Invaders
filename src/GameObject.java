@@ -1,6 +1,9 @@
 import java.awt.*;
+import java.util.ArrayList;
 
 public class GameObject {
+
+    protected GameObjectManager gameObjectManager;
 
     protected int x;
     protected int y;
@@ -14,10 +17,11 @@ public class GameObject {
 
     }
 
-    public GameObject(int x, int y, int speed){
+    public GameObject(int x, int y, int speed, GameObjectManager gameObjects){
         this.x = x;
         this.y = y;
         this.speed = speed;
+        this.gameObjectManager = gameObjects;
     }
 
 

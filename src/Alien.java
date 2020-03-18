@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Alien extends GameObject {
 
@@ -11,8 +12,10 @@ public class Alien extends GameObject {
 
 
 
-    public Alien(int x, int y, int s){
-        super(x, y, s);
+    public Alien(int x, int y, int s, GameObjectManager gameObjectManager){
+        super(x, y, s, gameObjectManager);
+
+        this.gameObjectManager = gameObjectManager;
 
         this.initialX = x;
         this.initialY = y;
