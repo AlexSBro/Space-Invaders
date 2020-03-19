@@ -7,7 +7,6 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 import javax.swing.JPanel;
-import java.util.ArrayList;
 
 
 public class Board  extends JPanel implements Runnable {
@@ -19,16 +18,12 @@ public class Board  extends JPanel implements Runnable {
 
     private Thread animator;
 
-    private GameObjectManager gameObjectManager;
-
-    Player player;
+    private GameObjectManager gameObjectManager = new GameObjectManager();
 
     public Board() {
         addKeyListener(new TAdapter());
         setFocusable(true);
         dimension = new Dimension(BOARD_WIDTH, BOARD_HEIGHT);
-
-        addGameObjects();
 
         setBackground(Color.black);
 
@@ -41,24 +36,6 @@ public class Board  extends JPanel implements Runnable {
         setDoubleBuffered(true);
     }
 
-    private void addGameObjects() {
-        player = new Player(BOARD_WIDTH/2, BOARD_HEIGHT-60, 5, gameObjectManager);
-        gameObjectManager.addToQue(player);
-
-        int ax = 10;
-        int ay = 10;
-
-        for (int i = 0; i < 10; i++) {
-            Alien alien = new Alien(ax, ay, 10, gameObjectManager);
-            ax += 40;
-            if (i == 4) {
-                ax = 10;
-                ay += 40;
-            }
-            gameObjectManager.addToQue(alien);
-        }
-    }
-
     public void paint(Graphics graphics) {
         super.paint(graphics);
 
@@ -66,7 +43,7 @@ public class Board  extends JPanel implements Runnable {
         graphics.fillRect(0, 0, dimension.width, dimension.height);
 
 
-        for (GameObject object: gameObjectManager){
+        for (GameObject object: gameObjectManager.getGameObjects()){
             object.paint(graphics);
         }
 
@@ -78,8 +55,9 @@ public class Board  extends JPanel implements Runnable {
 
         public void keyReleased(KeyEvent e) {
             int key = e.getKeyCode();
-            player.rightKeyPressed = false;
-            player.leftKeyPressed = false;
+            gameObjectManager.rightKeyReleased();
+            gameObjectManager.leftKeyReleased();
+            gameObjectManager.rightKeyReleased();
 
         }
 
@@ -87,13 +65,13 @@ public class Board  extends JPanel implements Runnable {
 
             int key = e.getKeyCode();
             if(key==39){
-                player.rightKeyPressed = true;
+                gameObjectManager.rightKeyPressed();
             }
             if (key == 37){
-                player.leftKeyPressed = true;
+                gameObjectManager.leftKeyPressed();
             }
             if (key == 32){
-                player.spacePressed = true;
+                gameObjectManager.spacePressed();
             }
 
         }
@@ -101,28 +79,28 @@ public class Board  extends JPanel implements Runnable {
     }
 
     public void tick(){
-       for (GameObject object: gameObjectManager) {
+       for (GameObject object: gameObjectManager.getGameObjects()) {
            object.tick();
        }
     }
 
-    public void run() {
+    public synchronized void run() {
 
-        int animationDelay = 5;
-        long time =
-                System.currentTimeMillis();
-        while (true) {//infinite loop
-            tick();
-            repaint();
+        while (true) {
+
+            synchronized (this) {
+                tick();
+                repaint();
+                gameObjectManager.updateObjects();
+            }
+
             try {
-                time += animationDelay;
-                Thread.sleep(Math.max(0,time -
-                        System.currentTimeMillis()));
+                Thread.sleep(40);
             }catch (InterruptedException e) {
                 System.out.println(e);
-            }//end catch
-        }//end while loop
+            }
+        }
 
-    }//end of run
+    }
 
-}//end of class
+}
