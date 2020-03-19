@@ -14,6 +14,7 @@ public class Projectile extends GameObject {
 
     @Override
     public void tick() {
+        super.tick();
 
         y -= speed;
 

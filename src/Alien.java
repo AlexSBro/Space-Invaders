@@ -28,6 +28,7 @@ public class Alien extends GameObject {
     }
 
     public void tick(){
+        super.tick();
 
         if (this.moveLeft)
             this.x -= 1;    //this.speed;

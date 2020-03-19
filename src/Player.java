@@ -20,6 +20,8 @@ public class Player extends GameObject {
     }
 
     public void tick(){
+        super.tick();
+
         if (gameObjectManager.isRightKeyPressed()) {
             this.x += this.speed;
         }
@@ -35,7 +37,7 @@ public class Player extends GameObject {
         }
 
         if(gameObjectManager.isSpacePressed()) {
-            gameObjectManager.addToQue(new Projectile(this.x + 8, this.y, 5, gameObjectManager));
+            gameObjectManager.addToQue(new Projectile(this.x + 8, this.y, 10, gameObjectManager));
             gameObjectManager.spaceReleased();
         }
 

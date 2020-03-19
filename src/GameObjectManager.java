@@ -7,7 +7,9 @@ public class GameObjectManager {
     private boolean spacePressed;
 
     private ArrayList<GameObject> gameObjects = new ArrayList<>();
+
     private ArrayList<GameObject> addedObjects = new ArrayList<>();
+    private ArrayList<GameObject> deletedObjects = new ArrayList<>();
 
     private Player player;
 
@@ -30,12 +32,20 @@ public class GameObjectManager {
         }
     }
 
+    public void addToRemovalQue(GameObject gameObject){
+        deletedObjects.remove(gameObject);
+    }
+
     public void addToQue(GameObject gameObject){
         addedObjects.add(gameObject);
     }
 
     public void updateObjects(){
         gameObjects.addAll(addedObjects);
+        gameObjects.removeAll(deletedObjects);
+
+        addedObjects = new ArrayList<>();
+        deletedObjects = new ArrayList<>();
     }
 
     public ArrayList<GameObject> getGameObjects() {
