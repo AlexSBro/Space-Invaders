@@ -21,17 +21,17 @@ public class GameObjectManager {
         int ax = 10;
         int ay = 10;
 
-//        for (int i = 0; i < 10; i++) {
-//            BasicAlien basicAlien = new BasicAlien(ax, ay, 10, 1,this);
-//            ax += 40;
-//            if (i == 4) {
-//                ax = 10;
-//                ay += 40;
-//            }
-//            gameObjects.add(basicAlien);
-//        }
+        for (int i = 0; i < 10; i++) {
+            BasicAlien basicAlien = new BasicAlien(ax, ay, 10, 1,this);
+            ax += 40;
+            if (i == 4) {
+                ax = 10;
+                ay += 40;
+            }
+            gameObjects.add(basicAlien);
+        }
 
-        if (gameObjects.size() == 1){
+        if (gameObjects.size() == 1){       //want this to be if waveNumber == 1
             SuperAlien superAlien = new SuperAlien(ax, ay, 5, 5,this);
             gameObjects.add(superAlien);
         }

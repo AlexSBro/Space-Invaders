@@ -1,8 +1,35 @@
 public class Alien extends GameObject {
 
+    protected int health;
+    protected int speed;
+
+    protected int initialX;
+    protected int initialY;
+
+    protected boolean moveRight;
+    protected boolean moveLeft;
 
     public Alien(int x, int y, int speed, int health, GameObjectManager gameObjects) {
         super(x, y, speed, health, gameObjects);
+    }
+
+    public void alienMovementAlgorithm() {
+        if (this.moveLeft)
+            this.x -= 1;    //this.speed;
+
+        if (this.moveRight)
+            this.x += 1;    //this.speed;
+
+        if (this.x > Board.BOARD_WIDTH - (200 - this.initialX)) {
+            this.moveLeft = true;
+            this.moveRight = false;
+            this.y += this.height + 5;
+        }
+        if (this.x <= this.initialX) {
+            this.moveRight = true;
+            this.moveLeft = false;
+            this.y += this.height + 5;
+        }
     }
 
     protected void registerHits(){

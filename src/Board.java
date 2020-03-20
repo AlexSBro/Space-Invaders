@@ -19,6 +19,8 @@ public class Board  extends JPanel implements Runnable {
     private Thread animator;
 
     private GameObjectManager gameObjectManager = new GameObjectManager();
+    private WaveManager waveManager = new WaveManager(0, gameObjectManager);
+
 
     public Board() {
         addKeyListener(new TAdapter());

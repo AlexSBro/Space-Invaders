@@ -1,7 +1,7 @@
 import java.awt.*;
 import java.util.ArrayList;
 
-public class GameObject implements Character{
+public class GameObject {
 
     protected GameObjectManager gameObjectManager;
 
@@ -13,7 +13,6 @@ public class GameObject implements Character{
 
     protected int width;
     protected int height;
-
 
 
     public GameObject(){
@@ -45,9 +44,4 @@ public class GameObject implements Character{
     }
 
     public void paint(Graphics graphics){}
-
-    @Override
-    public void movementAlgorithm() {
-
-    }
 }
