@@ -48,11 +48,18 @@ public class GameObjectManager {
     public boolean isIntersecting(GameObject gameObjectA, GameObject gameObjectB){
         //return (gameObjectA.y >= gameObjectB.y && gameObjectA.y <= gameObjectB.y + gameObjectB.height) && (gameObjectA.x >= gameObjectB.x && gameObjectA.x <= gameObjectB.x + gameObjectB.width);
 
-        if (gameObjectA.y < gameObjectB.y + gameObjectB.height && gameObjectA.y + gameObjectA.height > gameObjectB.y
-                && gameObjectA.x < gameObjectB.x + gameObjectB.width && gameObjectA.x + gameObjectA.width > gameObjectB.x){
-            return false;
-        }
-        return true;
+        int topA = gameObjectA.y;
+        int bottomA = gameObjectA.y + gameObjectA.height;
+        int leftA = gameObjectA.x;
+        int rightA = gameObjectA.x + gameObjectA.width;
+
+        int topB = gameObjectB.y;
+        int bottomB = gameObjectB.y + gameObjectB.height;
+        int leftB = gameObjectB.x;
+        int rightB = gameObjectB.x + gameObjectB.width;
+
+        return ((topA <= bottomB && bottomA >= bottomB) || (bottomA >= topB && bottomA <= bottomB)) && ((rightA >= leftB && leftA <= leftB) || (leftA <= rightB && leftA >= leftB));
+
     }
 
     public void addToQue(GameObject gameObject){
