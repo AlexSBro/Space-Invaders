@@ -15,10 +15,10 @@ public class Alien extends GameObject {
 
     public void alienMovementAlgorithm() {
         if (this.moveLeft)
-            this.x -= 1;    //this.speed;
+            this.x -= speed;    //this.speed;
 
         if (this.moveRight)
-            this.x += 1;    //this.speed;
+            this.x += speed;    //this.speed;
 
         if (this.x > Board.BOARD_WIDTH - (200 - this.initialX)) {
             this.moveLeft = true;

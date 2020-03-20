@@ -44,7 +44,7 @@ public class Player extends GameObject {
     }
 
     public void paint(Graphics graphics){
-        graphics.setColor(Color.red);
+        graphics.setColor(Color.orange);
 
         int tenth = height/10;
         graphics.fillRect(this.x + (4*tenth), this.y, 2*tenth, tenth*3);

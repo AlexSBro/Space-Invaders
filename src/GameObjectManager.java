@@ -6,7 +6,7 @@ public class GameObjectManager {
     private boolean leftKeyPressed;
     private boolean spacePressed;
 
-    private WaveManager waveManager = new WaveManager();
+    private WaveManager waveManager;
 
     private ArrayList<GameObject> gameObjects = new ArrayList<>();
 
@@ -16,22 +16,10 @@ public class GameObjectManager {
     private Player player;
 
     public GameObjectManager() {
+         waveManager = new WaveManager(this);
+
         player = new Player(Board.BOARD_WIDTH/2, Board.BOARD_HEIGHT-60, 5, 5,this);
         gameObjects.add(player);
-
-        int ax = 10;
-        int ay = 10;
-
-        for (int i = 0; i < 10; i++) {
-            BasicAlien basicAlien = new BasicAlien(ax, ay, 10, 1,this);
-            ax += 40;
-            if (i == 4) {
-                ax = 10;
-                ay += 40;
-            }
-            gameObjects.add(basicAlien);
-        }
-
     }
 
     public ArrayList<GameObject> getGameObjects() {
@@ -46,10 +34,11 @@ public class GameObjectManager {
         deletedObjects = new ArrayList<>();
 
         if (gameObjects.size() == 1){
-
             gameObjects.addAll(waveManager.getNextWave());
         }
     }
+
+    public void levelPassed(){}
 
     public boolean isIntersecting(GameObject gameObjectA, GameObject gameObjectB){
 

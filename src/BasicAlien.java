@@ -30,6 +30,19 @@ public class BasicAlien extends Alien {
 
 
     public void paint(Graphics graphics){
+        switch (health){
+            case 1:
+                graphics.setColor(Color.lightGray);
+                break;
+            case 2:
+                graphics.setColor(Color.gray);
+                break;
+            case 3:
+                graphics.setColor(Color.darkGray);
+                break;
+
+        }
+
         graphics.fillRect(this.x, this.y, this.width, this.height);
     }
 }
