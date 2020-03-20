@@ -6,13 +6,14 @@ public class GameObjectManager {
     private boolean leftKeyPressed;
     private boolean spacePressed;
 
+    private WaveManager waveManager = new WaveManager();
+
     private ArrayList<GameObject> gameObjects = new ArrayList<>();
 
     private ArrayList<GameObject> addedObjects = new ArrayList<>();
     private ArrayList<GameObject> deletedObjects = new ArrayList<>();
 
     private Player player;
-
 
     public GameObjectManager() {
         player = new Player(Board.BOARD_WIDTH/2, Board.BOARD_HEIGHT-60, 5, 5,this);
@@ -31,12 +32,7 @@ public class GameObjectManager {
             gameObjects.add(basicAlien);
         }
 
-        if (gameObjects.size() == 1){       //want this to be if waveNumber == 1
-            SuperAlien superAlien = new SuperAlien(ax, ay, 5, 5,this);
-            gameObjects.add(superAlien);
-        }
     }
-
 
     public ArrayList<GameObject> getGameObjects() {
         return gameObjects;
@@ -48,6 +44,11 @@ public class GameObjectManager {
 
         addedObjects = new ArrayList<>();
         deletedObjects = new ArrayList<>();
+
+        if (gameObjects.size() == 1){
+
+            gameObjects.addAll(waveManager.getNextWave());
+        }
     }
 
     public boolean isIntersecting(GameObject gameObjectA, GameObject gameObjectB){

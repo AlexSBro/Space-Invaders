@@ -1,16 +1,20 @@
+import java.util.ArrayList;
+
 public class WaveManager {
 
-    protected int waveNumber = 0;
+    private ArrayList<ArrayList<GameObject>> waves = new ArrayList<>();
 
     public WaveManager(){
 
     }
 
-    public WaveManager(int waveNumber, GameObjectManager gameObjectManager){
-        this.waveNumber = waveNumber;
+    public ArrayList<GameObject> getNextWave(){
+        ArrayList<GameObject> nextWave = new ArrayList<>();
+
+        //Max's code
+
+        return nextWave;
     }
 
-    public void tick(){
 
-    }
 }
