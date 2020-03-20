@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public class Alien extends GameObject {
+public class BasicAlien extends GameObject {
 
     int initialX;
     int initialY;
@@ -10,7 +10,7 @@ public class Alien extends GameObject {
     boolean isVisible;
 
 
-    public Alien(int x, int y, int s, GameObjectManager gameObjectManager){
+    public BasicAlien(int x, int y, int s, GameObjectManager gameObjectManager){
         super(x, y, s, gameObjectManager);
 
         this.gameObjectManager = gameObjectManager;

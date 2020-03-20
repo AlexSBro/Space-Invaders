@@ -22,13 +22,13 @@ public class GameObjectManager {
         int ay = 10;
 
         for (int i = 0; i < 10; i++) {
-            Alien alien = new Alien(ax, ay, 10, this);
+            BasicAlien basicAlien = new BasicAlien(ax, ay, 10, this);
             ax += 40;
             if (i == 4) {
                 ax = 10;
                 ay += 40;
             }
-            gameObjects.add(alien);
+            gameObjects.add(basicAlien);
         }
     }
 
