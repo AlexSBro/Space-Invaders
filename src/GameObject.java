@@ -1,9 +1,12 @@
 import java.awt.*;
 import java.util.ArrayList;
 
-public class GameObject {
+public class GameObject implements Character{
 
     protected GameObjectManager gameObjectManager;
+
+    protected int health;
+    protected int speed;
 
     protected int x;
     protected int y;
@@ -11,17 +14,17 @@ public class GameObject {
     protected int width;
     protected int height;
 
-    protected int speed;
 
 
     public GameObject(){
 
     }
 
-    public GameObject(int x, int y, int speed, GameObjectManager gameObjects){
+    public GameObject(int x, int y, int speed, int health, GameObjectManager gameObjects){
         this.x = x;
         this.y = y;
         this.speed = speed;
+        this.health = health;
         this.gameObjectManager = gameObjects;
     }
 
@@ -42,4 +45,9 @@ public class GameObject {
     }
 
     public void paint(Graphics graphics){}
+
+    @Override
+    public void movementAlgorithm() {
+
+    }
 }

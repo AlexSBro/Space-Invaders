@@ -15,20 +15,25 @@ public class GameObjectManager {
 
 
     public GameObjectManager() {
-        player = new Player(Board.BOARD_WIDTH/2, Board.BOARD_HEIGHT-60, 5, this);
+        player = new Player(Board.BOARD_WIDTH/2, Board.BOARD_HEIGHT-60, 5, 5,this);
         gameObjects.add(player);
 
         int ax = 10;
         int ay = 10;
 
-        for (int i = 0; i < 10; i++) {
-            BasicAlien basicAlien = new BasicAlien(ax, ay, 10, this);
-            ax += 40;
-            if (i == 4) {
-                ax = 10;
-                ay += 40;
-            }
-            gameObjects.add(basicAlien);
+//        for (int i = 0; i < 10; i++) {
+//            BasicAlien basicAlien = new BasicAlien(ax, ay, 10, 1,this);
+//            ax += 40;
+//            if (i == 4) {
+//                ax = 10;
+//                ay += 40;
+//            }
+//            gameObjects.add(basicAlien);
+//        }
+
+        if (gameObjects.size() == 1){
+            SuperAlien superAlien = new SuperAlien(ax, ay, 5, 5,this);
+            gameObjects.add(superAlien);
         }
     }
 
@@ -46,7 +51,6 @@ public class GameObjectManager {
     }
 
     public boolean isIntersecting(GameObject gameObjectA, GameObject gameObjectB){
-        //return (gameObjectA.y >= gameObjectB.y && gameObjectA.y <= gameObjectB.y + gameObjectB.height) && (gameObjectA.x >= gameObjectB.x && gameObjectA.x <= gameObjectB.x + gameObjectB.width);
 
         int topA = gameObjectA.y;
         int bottomA = gameObjectA.y + gameObjectA.height;
@@ -59,7 +63,6 @@ public class GameObjectManager {
         int rightB = gameObjectB.x + gameObjectB.width;
 
         return ((topA <= bottomB && bottomA >= bottomB) || (bottomA >= topB && bottomA <= bottomB)) && ((rightA >= leftB && leftA <= leftB) || (leftA <= rightB && leftA >= leftB));
-
     }
 
     public void addToQue(GameObject gameObject){

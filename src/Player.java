@@ -2,8 +2,8 @@ import java.awt.*;
 
 public class Player extends GameObject {
 
-    public Player(int x, int y, int s, GameObjectManager gameObjectManager){
-        super(x, y, s, gameObjectManager);
+    public Player(int x, int y, int s, int health,  GameObjectManager gameObjectManager){
+        super(x, y, s, health, gameObjectManager);
 
         this.gameObjectManager = gameObjectManager;
 

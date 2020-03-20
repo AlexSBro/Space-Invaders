@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class Projectile extends GameObject {
 
     public Projectile(int x, int y, int speed, GameObjectManager gameObjectManager) {
-        super(x, y, speed, gameObjectManager);
+        super(x, y, speed, 1, gameObjectManager);
 
         this.gameObjectManager = gameObjectManager;
 
@@ -15,7 +15,6 @@ public class Projectile extends GameObject {
     @Override
     public void tick() {
         super.tick();
-
 
         y -= speed;
     }

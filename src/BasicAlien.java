@@ -1,29 +1,33 @@
 import java.awt.*;
 
-public class BasicAlien extends GameObject {
+public class BasicAlien extends Alien {
+
+    int health;
+    int speed;
 
     int initialX;
     int initialY;
 
     boolean moveRight;
     boolean moveLeft;
-    boolean isVisible;
 
 
-    public BasicAlien(int x, int y, int s, GameObjectManager gameObjectManager){
-        super(x, y, s, gameObjectManager);
+    public BasicAlien(int x, int y, int s, int health, GameObjectManager gameObjectManager){
+        super(x, y, s, health, gameObjectManager);
 
-        this.gameObjectManager = gameObjectManager;
+        this.health = health;
+        this.speed = s;
+
+        this.width = 30;
+        this.height = 30;
 
         this.initialX = x;
         this.initialY = y;
 
         moveLeft = false;
         moveRight = true;
-        isVisible = true;
 
-        this.width = 30;
-        this.height = 30;
+        this.gameObjectManager = gameObjectManager;
     }
 
 
@@ -31,8 +35,7 @@ public class BasicAlien extends GameObject {
         super.tick();
 
         alienMovementAlgorithm();
-        removeIfShot();
-
+        registerHits();
     }
 
     private void alienMovementAlgorithm() {
@@ -52,16 +55,6 @@ public class BasicAlien extends GameObject {
                 this.moveLeft = false;
                 this.y += this.height + 5;
         }
-    }
-
-    private void removeIfShot() {
-        for(GameObject gameObject: gameObjectManager.getGameObjects()){
-            if (gameObject instanceof Projectile && gameObjectManager.isIntersecting(this, gameObject)) {
-                removeSelf();
-                gameObject.removeSelf();
-            }
-        }
-
     }
 
     public void paint(Graphics graphics){
