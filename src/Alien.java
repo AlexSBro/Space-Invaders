@@ -52,4 +52,19 @@ public class Alien extends GameObject {
     public void paint(Graphics graphics){
         graphics.fillRect(this.x, this.y, this.width, this.height);
     }
+
+    private void removeIfShot() {
+        //testing if out of board bounds (X or Y), will delete itself if so.
+        if (x > Board.BOARD_WIDTH || x < -width || y > Board.BOARD_HEIGHT || y + height < 0){
+            removeSelf();
+        }
+
+        for(GameObject gameObject: gameObjectManager.getGameObjects()){
+            if (gameObject instanceof Projectile) {
+
+            }
+        }
+
+    }
+
 }

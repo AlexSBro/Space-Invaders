@@ -29,7 +29,10 @@ public class GameObject {
     }
 
     public void tick(){
+        removeIfOutOfBounds();
+    }
 
+    private void removeIfOutOfBounds() {
         //testing if out of board bounds (X or Y), will delete itself if so.
         if (x > Board.BOARD_WIDTH || x < -width || y > Board.BOARD_HEIGHT || y + height < 0){
             removeSelf();

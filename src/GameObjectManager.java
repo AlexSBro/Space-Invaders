@@ -33,7 +33,7 @@ public class GameObjectManager {
     }
 
     public void addToRemovalQue(GameObject gameObject){
-        deletedObjects.add(gameObject); //This was on .remove(), not sure if thats what it shiould be?
+          deletedObjects.add(gameObject); //This was on .remove(), not sure if thats what it shiould be?
     }
 
     public void addToQue(GameObject gameObject){
