@@ -7,8 +7,8 @@ public class Player extends GameObject {
 
         this.gameObjectManager = gameObjectManager;
 
-        this.width = 20;
-        this.height = 20;
+        this.width = 40;
+        this.height = 40;
 
     }
 
@@ -22,7 +22,7 @@ public class Player extends GameObject {
 
     private void playerShooting() {
         if(gameObjectManager.isSpacePressed()) {
-            gameObjectManager.addToQue(new Projectile(this.x + 8, this.y, 10, gameObjectManager));
+            gameObjectManager.addToQue(new Projectile(this.x + this.width/2 - 2, this.y - 20, 10, gameObjectManager));
             gameObjectManager.spaceReleased();
         }
     }
@@ -45,7 +45,13 @@ public class Player extends GameObject {
 
     public void paint(Graphics graphics){
         graphics.setColor(Color.red);
-        graphics.fillRect(this.x, this.y, width, height);
+
+        int tenth = height/10;
+        graphics.fillRect(this.x + (4*tenth), this.y, 2*tenth, tenth*3);
+        graphics.fillRect(this.x + (2*tenth), this.y + 3*tenth, 6*tenth, tenth*1);
+        graphics.fillRect(this.x + (1*tenth), this.y + 4*tenth, 8*tenth, tenth*1);
+        graphics.fillRect(this.x + (0*tenth), this.y + 5*tenth, 10*tenth, tenth*5);
+
 
     }
 }

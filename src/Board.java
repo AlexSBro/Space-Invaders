@@ -95,7 +95,7 @@ public class Board  extends JPanel implements Runnable {
             }
 
             try {
-                Thread.sleep(40);
+                Thread.sleep(20 );
             }catch (InterruptedException e) {
                 System.out.println(e);
             }
