@@ -33,7 +33,7 @@ public class GameObjectManager {
     }
 
     public void addToRemovalQue(GameObject gameObject){
-        deletedObjects.remove(gameObject);
+        deletedObjects.add(gameObject); //This was on .remove(), not sure if thats what it shiould be?
     }
 
     public void addToQue(GameObject gameObject){
@@ -41,11 +41,15 @@ public class GameObjectManager {
     }
 
     public void updateObjects(){
+        System.out.println(deletedObjects.size());
+
         gameObjects.addAll(addedObjects);
         gameObjects.removeAll(deletedObjects);
 
         addedObjects = new ArrayList<>();
         deletedObjects = new ArrayList<>();
+
+        System.out.println(gameObjects.size());
     }
 
     public ArrayList<GameObject> getGameObjects() {

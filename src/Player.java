@@ -37,8 +37,10 @@ public class Player extends GameObject {
         }
 
         if(gameObjectManager.isSpacePressed()) {
-            gameObjectManager.addToQue(new Projectile(this.x + 8, this.y, 10, gameObjectManager));
+            gameObjectManager.addToQue(new Projectile(this.x + 8, this.y, 40, gameObjectManager));
             gameObjectManager.spaceReleased();
+
+
         }
 
     }

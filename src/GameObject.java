@@ -31,12 +31,11 @@ public class GameObject {
     public void tick(){
 
         //testing if out of board bounds (X or Y), will delete itself if so.
-        if (x + width > Board.BOARD_WIDTH || x + width < Board.BOARD_WIDTH || y + height > Board.BOARD_HEIGHT || y + height < Board.BOARD_HEIGHT){
+        if (x > Board.BOARD_WIDTH || x < -width || y > Board.BOARD_HEIGHT || y + height < 0){
             removeSelf();
         }
     }
 
     public void paint(Graphics graphics){}
-
 
 }
