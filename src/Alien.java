@@ -10,7 +10,6 @@ public class Alien extends GameObject {
     boolean isVisible;
 
 
-
     public Alien(int x, int y, int s, GameObjectManager gameObjectManager){
         super(x, y, s, gameObjectManager);
 
@@ -27,9 +26,16 @@ public class Alien extends GameObject {
         this.height = 30;
     }
 
+
     public void tick(){
         super.tick();
 
+        alienMovementAlgorithm();
+        removeIfShot();
+
+    }
+
+    private void alienMovementAlgorithm() {
         if (this.moveLeft)
             this.x -= 1;    //this.speed;
 
@@ -46,25 +52,19 @@ public class Alien extends GameObject {
                 this.moveLeft = false;
                 this.y += this.height + 5;
         }
+    }
+
+    private void removeIfShot() {
+        for(GameObject gameObject: gameObjectManager.getGameObjects()){
+            if (gameObject instanceof Projectile && gameObjectManager.isIntersecting(this, gameObject)) {
+                removeSelf();
+                gameObject.removeSelf();
+            }
+        }
 
     }
 
     public void paint(Graphics graphics){
         graphics.fillRect(this.x, this.y, this.width, this.height);
     }
-
-    private void removeIfShot() {
-        //testing if out of board bounds (X or Y), will delete itself if so.
-        if (x > Board.BOARD_WIDTH || x < -width || y > Board.BOARD_HEIGHT || y + height < 0){
-            removeSelf();
-        }
-
-        for(GameObject gameObject: gameObjectManager.getGameObjects()){
-            if (gameObject instanceof Projectile) {
-
-            }
-        }
-
-    }
-
 }

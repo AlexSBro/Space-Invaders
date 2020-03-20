@@ -1,5 +1,4 @@
 import java.awt.*;
-import java.util.ArrayList;
 
 public class Player extends GameObject {
 
@@ -13,15 +12,22 @@ public class Player extends GameObject {
 
     }
 
-    public void paint(Graphics graphics){
-        graphics.setColor(Color.red);
-        graphics.fillRect(this.x, this.y, width, height);
-
-    }
 
     public void tick(){
         super.tick();
 
+        playerMovement();
+        playerShooting();
+    }
+
+    private void playerShooting() {
+        if(gameObjectManager.isSpacePressed()) {
+            gameObjectManager.addToQue(new Projectile(this.x + 8, this.y, 10, gameObjectManager));
+            gameObjectManager.spaceReleased();
+        }
+    }
+
+    private void playerMovement() {
         if (gameObjectManager.isRightKeyPressed()) {
             this.x += this.speed;
         }
@@ -35,13 +41,11 @@ public class Player extends GameObject {
         if (this.x < 0){
             this.x = 0;
         }
+    }
 
-        if(gameObjectManager.isSpacePressed()) {
-            gameObjectManager.addToQue(new Projectile(this.x + 8, this.y, 40, gameObjectManager));
-            gameObjectManager.spaceReleased();
-
-
-        }
+    public void paint(Graphics graphics){
+        graphics.setColor(Color.red);
+        graphics.fillRect(this.x, this.y, width, height);
 
     }
 }

@@ -32,28 +32,29 @@ public class GameObjectManager {
         }
     }
 
-    public void addToRemovalQue(GameObject gameObject){
-          deletedObjects.add(gameObject); //This was on .remove(), not sure if thats what it shiould be?
+
+    public ArrayList<GameObject> getGameObjects() {
+        return gameObjects;
+    }
+
+    public void updateObjects(){
+        gameObjects.addAll(addedObjects);
+        gameObjects.removeAll(deletedObjects);
+
+        addedObjects = new ArrayList<>();
+        deletedObjects = new ArrayList<>();
+    }
+
+    public boolean isIntersecting(GameObject gameObjectA, GameObject gameObjectB){
+        return (gameObjectA.y >= gameObjectB.y && gameObjectA.y <= gameObjectB.y + gameObjectB.height) && (gameObjectA.x >= gameObjectB.x && gameObjectA.x <= gameObjectB.x + gameObjectB.width);
     }
 
     public void addToQue(GameObject gameObject){
         addedObjects.add(gameObject);
     }
 
-    public void updateObjects(){
-        System.out.println(deletedObjects.size());
-
-        gameObjects.addAll(addedObjects);
-        gameObjects.removeAll(deletedObjects);
-
-        addedObjects = new ArrayList<>();
-        deletedObjects = new ArrayList<>();
-
-        System.out.println(gameObjects.size());
-    }
-
-    public ArrayList<GameObject> getGameObjects() {
-        return gameObjects;
+    public void addToRemovalQue(GameObject gameObject){
+        deletedObjects.add(gameObject);
     }
 
     public void spacePressed(){

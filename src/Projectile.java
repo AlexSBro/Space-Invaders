@@ -16,14 +16,15 @@ public class Projectile extends GameObject {
     public void tick() {
         super.tick();
 
-        y -= speed;
 
+        y -= speed;
     }
+
+
 
     @Override
     public void paint(Graphics graphics) {
         graphics.setColor(Color.cyan);
         graphics.fillRect(this.x, this.y, width, height);
     }
-
 }

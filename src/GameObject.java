@@ -13,6 +13,7 @@ public class GameObject {
 
     protected int speed;
 
+
     public GameObject(){
 
     }
@@ -24,12 +25,13 @@ public class GameObject {
         this.gameObjectManager = gameObjects;
     }
 
-    public void removeSelf(){
-        gameObjectManager.addToRemovalQue(this);
-    }
 
     public void tick(){
         removeIfOutOfBounds();
+    }
+
+    public void removeSelf(){
+        gameObjectManager.addToRemovalQue(this);
     }
 
     private void removeIfOutOfBounds() {
@@ -40,5 +42,4 @@ public class GameObject {
     }
 
     public void paint(Graphics graphics){}
-
 }
