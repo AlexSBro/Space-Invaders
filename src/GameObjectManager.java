@@ -46,7 +46,13 @@ public class GameObjectManager {
     }
 
     public boolean isIntersecting(GameObject gameObjectA, GameObject gameObjectB){
-        return (gameObjectA.y >= gameObjectB.y && gameObjectA.y <= gameObjectB.y + gameObjectB.height) && (gameObjectA.x >= gameObjectB.x && gameObjectA.x <= gameObjectB.x + gameObjectB.width);
+        //return (gameObjectA.y >= gameObjectB.y && gameObjectA.y <= gameObjectB.y + gameObjectB.height) && (gameObjectA.x >= gameObjectB.x && gameObjectA.x <= gameObjectB.x + gameObjectB.width);
+
+        if (gameObjectA.y < gameObjectB.y + gameObjectB.height && gameObjectA.y + gameObjectA.height > gameObjectB.y
+                && gameObjectA.x < gameObjectB.x + gameObjectB.width && gameObjectA.x + gameObjectA.width > gameObjectB.x){
+            return false;
+        }
+        return true;
     }
 
     public void addToQue(GameObject gameObject){
