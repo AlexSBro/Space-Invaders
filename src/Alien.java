@@ -1,8 +1,5 @@
 public class Alien extends GameObject {
 
-    protected int health;
-    protected int speed;
-
     protected int initialX;
     protected int initialY;
 

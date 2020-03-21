@@ -41,8 +41,6 @@ public class GameObjectManager {
         }
     }
 
-    public void levelPassed(){}
-
     public boolean isIntersecting(GameObject gameObjectA, GameObject gameObjectB){
 
         int topA = gameObjectA.y;

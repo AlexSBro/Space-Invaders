@@ -2,8 +2,8 @@ import java.awt.*;
 
 public class BasicAlien extends Alien {
 
-    public BasicAlien(int x, int y, int s, int health, GameObjectManager gameObjectManager){
-        super(x, y, s, health, gameObjectManager);
+    public BasicAlien(int x, int y, int speed, int health, GameObjectManager gameObjectManager){
+        super(x, y, speed, health, gameObjectManager);
 
         this.width = 30;
         this.height = 30;
