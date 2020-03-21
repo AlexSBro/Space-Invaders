@@ -5,8 +5,6 @@ public class Player extends GameObject {
     public Player(int x, int y, int s, int health,  GameObjectManager gameObjectManager){
         super(x, y, s, health, gameObjectManager);
 
-        this.gameObjectManager = gameObjectManager;
-
         this.width = 40;
         this.height = 40;
 

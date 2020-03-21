@@ -33,8 +33,11 @@ public class GameObjectManager {
         addedObjects = new ArrayList<>();
         deletedObjects = new ArrayList<>();
 
-        if (gameObjects.size() == 1){
-            gameObjects.addAll(waveManager. getNextWave());
+        if (gameObjects.size() == 1) {
+            ArrayList<GameObject> nextWave = waveManager.getNextWave();
+            if (nextWave != null) {
+                gameObjects.addAll(waveManager.getNextWave());
+            }
         }
     }
 

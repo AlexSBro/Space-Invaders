@@ -1,29 +1,36 @@
 import java.awt.*;
 
-public class BasicAlien extends Alien {
+public class StreakerAlien extends Alien {
 
-    public BasicAlien(int x, int y, int s, int health, GameObjectManager gameObjectManager){
-        super(x, y, s, health, gameObjectManager);
+    public StreakerAlien(int x, int y, int speed, int health, GameObjectManager gameObjects) {
+        super(x, y, speed, health, gameObjects);
 
-        this.width = 30;
-        this.height = 30;
-
-        this.initialX = x;
-        this.initialY = y;
-
-        moveLeft = false;
-        moveRight = true;
-
-        this.gameObjectManager = gameObjectManager;
+        this.width = 50;
+        this.height = 50;
     }
 
+    @Override
+    public void alienMovementAlgorithm() {
 
-    public void tick(){
+        this.y += speed;
+
+    }
+
+    @Override
+    public void tick() {
         super.tick();
+
+        alienMovementAlgorithm();
+        registerHits();
     }
 
+    @Override
+    public void removeSelf() {
+        super.removeSelf();
+    }
 
-    public void paint(Graphics graphics){
+    @Override
+    public void paint(Graphics graphics) {
         Color color;
 
         switch (health){
@@ -54,6 +61,5 @@ public class BasicAlien extends Alien {
                 {' ',' ',' ',' ',' ',' ',' ',' ',' ',' '},
         };
 
-        SpriteDrawer.drawSprite(graphics, color, array, height, x, y);
-    }
+        SpriteDrawer.drawSprite(graphics, color, array, height, x, y);    }
 }

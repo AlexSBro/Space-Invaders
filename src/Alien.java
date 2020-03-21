@@ -13,6 +13,14 @@ public class Alien extends GameObject {
         super(x, y, speed, health, gameObjects);
     }
 
+    @Override
+    public void tick() {
+        super.tick();
+
+        alienMovementAlgorithm();
+        registerHits();
+    }
+
     public void alienMovementAlgorithm() {
         if (this.moveLeft)
             this.x -= speed;    //this.speed;

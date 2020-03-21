@@ -15,16 +15,13 @@ public class GameObject {
     protected int height;
 
 
-    public GameObject(){
 
-    }
-
-    public GameObject(int x, int y, int speed, int health, GameObjectManager gameObjects){
+    public GameObject(int x, int y, int speed, int health, GameObjectManager gameObjectManager){
         this.x = x;
         this.y = y;
         this.speed = speed;
         this.health = health;
-        this.gameObjectManager = gameObjects;
+        this.gameObjectManager = gameObjectManager;
     }
 
 

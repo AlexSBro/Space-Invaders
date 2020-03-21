@@ -16,8 +16,16 @@ public class WaveManager {
         waves.add(generateBasicAliens(10, 3));
     }
 
+    private ArrayList<GameObject> generateStreakerAlien(int speed, int health){
+        ArrayList<GameObject> wave = new ArrayList<>();
+
+        wave.add(new StreakerAlien(Board.BOARD_WIDTH, 0, speed, health, gameObjectManager));
+
+        return wave;
+    }
+
     private ArrayList<GameObject> generateBasicAliens(int speed, int health){
-        ArrayList<GameObject> wave2 = new ArrayList<>();
+        ArrayList<GameObject> wave = new ArrayList<>();
 
         int ax = 10;
         int ay = 10;
@@ -29,15 +37,19 @@ public class WaveManager {
                 ax = 10;
                 ay += 40;
             }
-            wave2.add(basicAlien);
+            wave.add(basicAlien);
         }
 
-        return wave2;
+        return wave;
     }
 
     public ArrayList<GameObject> getNextWave(){
-        waveNumber++;
-        return waves.get(waveNumber);
+        if (waveNumber < waves.size()-1) {
+            waveNumber++;
+            return waves.get(waveNumber);
+        }else{
+            return null;
+        }
     }
 
 
