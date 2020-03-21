@@ -34,7 +34,7 @@ public class GameObjectManager {
         deletedObjects = new ArrayList<>();
 
         if (gameObjects.size() == 1){
-            gameObjects.addAll(waveManager.getNextWave());
+            gameObjects.addAll(waveManager. getNextWave());
         }
     }
 

@@ -30,19 +30,36 @@ public class BasicAlien extends Alien {
 
 
     public void paint(Graphics graphics){
+        Color color;
+
         switch (health){
             case 1:
-                graphics.setColor(Color.lightGray);
+                color = Color.lightGray;
                 break;
             case 2:
-                graphics.setColor(Color.gray);
+                color = Color.gray;
                 break;
             case 3:
-                graphics.setColor(Color.darkGray);
+                color = Color.darkGray;
                 break;
+            default:
+                color = Color.lightGray;
 
         }
 
-        graphics.fillRect(this.x, this.y, this.width, this.height);
+        char[][] array = {
+                {' ',' ',' ',' ',' ',' ',' ',' ',' ',' '},
+                {' ',' ','X',' ',' ',' ',' ','X',' ',' '},
+                {' ',' ',' ','X',' ',' ','X',' ',' ',' '},
+                {' ',' ','X','X','X','X','X','X',' ',' '},
+                {' ','X','X',' ','X','X',' ','X','X',' '},
+                {'X','X','X','X','X','X','X','X','X','X'},
+                {'X',' ','X','X','X','X','X','X',' ','X'},
+                {'X',' ','X',' ',' ',' ',' ','X',' ','X'},
+                {' ',' ',' ','X','X','X','X',' ',' ',' '},
+                {' ',' ',' ',' ',' ',' ',' ',' ',' ',' '},
+        };
+
+        SpriteDrawer.drawSprite(graphics, color, array, height, x, y);
     }
 }

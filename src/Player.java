@@ -44,13 +44,6 @@ public class Player extends GameObject {
     }
 
     public void paint(Graphics graphics){
-//        graphics.setColor(Color.orange);
-//
-//        int tenth = height/10;
-//        graphics.fillRect(this.x + (4*tenth), this.y, 2*tenth, tenth*3);
-//        graphics.fillRect(this.x + (2*tenth), this.y + 3*tenth, 6*tenth, tenth*1);
-//        graphics.fillRect(this.x + (1*tenth), this.y + 4*tenth, 8*tenth, tenth*1);
-//        graphics.fillRect(this.x + (0*tenth), this.y + 5*tenth, 10*tenth, tenth*5);
 
         char[][] array = {
                 {' ',' ',' ',' ','X','X',' ',' ',' ',' '},
@@ -66,7 +59,6 @@ public class Player extends GameObject {
         };
 
         SpriteDrawer.drawSprite(graphics, Color.orange, array, height, x, y);
-
 
     }
 }
