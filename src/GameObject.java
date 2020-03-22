@@ -52,8 +52,17 @@ public class GameObject {
         gameObjectManager.addToRemovalQue(this);
     }
 
-    private boolean isOutOfBounds(){
-        return x > Board.BOARD_WIDTH || x < -width || y > Board.BOARD_HEIGHT || y + height < 0;
+    public boolean isOutOfBounds(){
+        return x + width > Board.BOARD_WIDTH || x < 0 || y > Board.BOARD_HEIGHT || y + height < 0;
+    }
+
+    public void preventMovingOutOfBounds() {
+        if (this.x > Board.BOARD_WIDTH - this.width){
+            this.x = Board.BOARD_WIDTH - this.width;
+        }
+        if (this.x < 0){
+            this.x = 0;
+        }
     }
 
     public void paint(Graphics graphics){

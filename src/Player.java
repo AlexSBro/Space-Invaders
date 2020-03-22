@@ -33,12 +33,7 @@ public class Player extends GameObject {
             this.x -= this.speed;
         }
 
-        if (this.x > Board.BOARD_WIDTH - this.width){
-            this.x = Board.BOARD_WIDTH - this.width;
-        }
-        if (this.x < 0){
-            this.x = 0;
-        }
+        preventMovingOutOfBounds();
     }
 
     public void paint(Graphics graphics){

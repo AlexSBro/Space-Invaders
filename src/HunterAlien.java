@@ -7,21 +7,6 @@ public class HunterAlien extends Alien {
 
         this.width = 100;
         this.height = 100;
-
-        this.color = Color.yellow;
-        this.spriteDrawing = new char[][]{
-                {' ', ' ', ' ', ' ', 'X', 'X', ' ', ' ', ' ', ' '},
-                {' ', ' ', 'X', 'X', 'X', 'X', 'X', 'X', ' ', ' '},
-                {' ', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', ' '},
-                {' ', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', ' '},
-                {' ', 'X', 'X', ' ', 'X', 'X', ' ', 'X', 'X', ' '},
-                {' ', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', ' '},
-                {' ', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', ' '},
-                {' ', ' ', ' ', 'X', 'X', 'X', 'X', ' ', ' ', ' '},
-                {' ', ' ', 'X', ' ', 'X', 'X', ' ', 'X', ' ', ' '},
-                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
-        };
-
     }
 
     public void tick(){
@@ -44,10 +29,42 @@ public class HunterAlien extends Alien {
 
         if (playerCenter == alienCenter)
             this.y += this.speed;
+
+        if (isOutOfBounds()){
+            preventMovingOutOfBounds();
+            this.y += this.speed;
+        }
     }
 
-    @Override
-    public void paint(Graphics graphics) {
-        super.paint(graphics);
+    public void paint(Graphics graphics){
+        Color color;
+
+        switch (health){
+            case 10:
+                color = Color.lightGray;
+                break;
+            case 50:
+                color = Color.gray;
+                break;
+            default:
+                color = Color.orange;
+
+        }
+
+
+        char[][] array = {
+                {' ',' ',' ',' ','X','X',' ',' ',' ',' '},
+                {' ',' ','X','X','X','X','X','X',' ',' '},
+                {' ','X','X','X','X','X','X','X','X',' '},
+                {' ','X','X','X','X','X','X','X','X',' '},
+                {' ','X','X',' ','X','X',' ','X','X',' '},
+                {' ','X','X','X','X','X','X','X','X',' '},
+                {' ','X','X','X','X','X','X','X','X',' '},
+                {' ',' ',' ','X','X','X','X',' ',' ',' '},
+                {' ',' ','X',' ','X','X',' ','X',' ',' '},
+                {' ',' ',' ',' ',' ',' ',' ',' ',' ',' '},
+        };
+
+        SpriteDrawer.drawSprite(graphics, color, array, height, x, y);
     }
 }
