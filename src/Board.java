@@ -39,8 +39,11 @@ public class Board  extends JPanel implements Runnable {
     public void paint(Graphics graphics) {
         super.paint(graphics);
 
-        graphics.setColor(Color.white);
+        graphics.setColor(Color.black);
         graphics.fillRect(0, 0, dimension.width, dimension.height);
+
+        graphics.setColor(Color.green);
+        graphics.fillRect(0,0, 100, 10);
 
 
         for (GameObject object: gameObjectManager.getGameObjects()){
