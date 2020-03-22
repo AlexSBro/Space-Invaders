@@ -18,7 +18,7 @@ public class GameObjectManager {
     public GameObjectManager() {
          waveManager = new WaveManager(this);
 
-        player = new Player(Board.BOARD_WIDTH/2, Board.BOARD_HEIGHT-60, 5, 5,this);
+        player = new Player(Board.BOARD_WIDTH/2, Board.BOARD_HEIGHT-60, 5, 100,this);
         gameObjects.add(player);
     }
 
@@ -27,18 +27,22 @@ public class GameObjectManager {
     }
 
     public void updateObjects(){
+
         gameObjects.addAll(addedObjects);
         gameObjects.removeAll(deletedObjects);
 
         addedObjects = new ArrayList<>();
         deletedObjects = new ArrayList<>();
 
-        if (gameObjects.size() == 1) {
-            ArrayList<GameObject> nextWave = waveManager.getNextWave();
-            if (nextWave != null) {
-                gameObjects.addAll(waveManager.getNextWave());
-            }
+    }
+
+    public void getNextWave(){
+
+        ArrayList<GameObject> nextWave = waveManager.getNextWave();
+        if (nextWave != null) {
+            gameObjects.addAll(nextWave);
         }
+
     }
 
     public boolean isIntersecting(GameObject gameObjectA, GameObject gameObjectB){
@@ -62,6 +66,10 @@ public class GameObjectManager {
 
     public void addToRemovalQue(GameObject gameObject){
         deletedObjects.add(gameObject);
+    }
+
+    public Player getPlayer() {
+        return player;
     }
 
     public void spacePressed(){

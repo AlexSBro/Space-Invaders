@@ -2,8 +2,8 @@ import java.awt.*;
 
 public class StreakerAlien extends Alien {
 
-    public StreakerAlien(int x, int y, int speed, int health, GameObjectManager gameObjects) {
-        super(x, y, speed, health, gameObjects);
+    public StreakerAlien(int x, int y, int speed, int health, int hitPoints, GameObjectManager gameObjects) {
+        super(x, y, speed, health, hitPoints, gameObjects);
 
         this.width = 50;
         this.height = 50;
@@ -34,17 +34,14 @@ public class StreakerAlien extends Alien {
         Color color;
 
         switch (health){
-            case 1:
+            case 10:
                 color = Color.lightGray;
                 break;
-            case 2:
+            case 50:
                 color = Color.gray;
                 break;
-            case 3:
-                color = Color.darkGray;
-                break;
             default:
-                color = Color.lightGray;
+                color = Color.darkGray;
 
         }
 

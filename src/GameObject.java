@@ -39,4 +39,12 @@ public class GameObject {
     }
 
     public void paint(Graphics graphics){}
+
+    public void hit(int hitPoints){
+        health -= hitPoints;
+        if(health <= 0){
+            removeSelf();
+        }
+    }
+
 }

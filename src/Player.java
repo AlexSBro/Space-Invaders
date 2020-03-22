@@ -10,12 +10,12 @@ public class Player extends GameObject {
 
     }
 
-
     public void tick(){
         super.tick();
 
         playerMovement();
         playerShooting();
+
     }
 
     private void playerShooting() {

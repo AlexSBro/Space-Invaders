@@ -1,13 +1,16 @@
 public class Alien extends GameObject {
 
+    protected int hitPoints;
+
     protected int initialX;
     protected int initialY;
 
     protected boolean moveRight;
     protected boolean moveLeft;
 
-    public Alien(int x, int y, int speed, int health, GameObjectManager gameObjects) {
+    public Alien(int x, int y, int speed, int health, int hitPoints, GameObjectManager gameObjects) {
         super(x, y, speed, health, gameObjects);
+        this.hitPoints = hitPoints;
     }
 
     @Override
@@ -34,6 +37,10 @@ public class Alien extends GameObject {
             this.moveRight = true;
             this.moveLeft = false;
             this.y += this.height + 5;
+        }
+
+        if(this.y + this.height >= Board.BOARD_HEIGHT){
+            gameObjectManager.getPlayer().hit(this.hitPoints);
         }
     }
 
