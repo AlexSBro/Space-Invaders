@@ -5,6 +5,20 @@ public class HunterAlien extends Alien {
     public HunterAlien(int x, int y, int speed, int health, int hitPoints, GameObjectManager gameObjectManager){
         super(x, y, speed, health, hitPoints, gameObjectManager);
 
+        this.spriteDrawing = new char[][] {
+                {' ',' ',' ',' ','X','X',' ',' ',' ',' '},
+                {' ',' ','X','X','X','X','X','X',' ',' '},
+                {' ','X','X','X','X','X','X','X','X',' '},
+                {' ','X','X','X','X','X','X','X','X',' '},
+                {' ','X','X',' ','X','X',' ','X','X',' '},
+                {' ','X','X','X','X','X','X','X','X',' '},
+                {' ','X','X','X','X','X','X','X','X',' '},
+                {' ',' ',' ','X','X','X','X',' ',' ',' '},
+                {' ',' ','X',' ','X','X',' ','X',' ',' '},
+                {' ',' ',' ',' ',' ',' ',' ',' ',' ',' '},
+        };
+        this.color = Color.yellow;
+
         this.width = 100;
         this.height = 100;
     }
@@ -36,35 +50,4 @@ public class HunterAlien extends Alien {
         }
     }
 
-    public void paint(Graphics graphics){
-        Color color;
-
-        switch (health){
-            case 10:
-                color = Color.lightGray;
-                break;
-            case 50:
-                color = Color.gray;
-                break;
-            default:
-                color = Color.orange;
-
-        }
-
-
-        char[][] array = {
-                {' ',' ',' ',' ','X','X',' ',' ',' ',' '},
-                {' ',' ','X','X','X','X','X','X',' ',' '},
-                {' ','X','X','X','X','X','X','X','X',' '},
-                {' ','X','X','X','X','X','X','X','X',' '},
-                {' ','X','X',' ','X','X',' ','X','X',' '},
-                {' ','X','X','X','X','X','X','X','X',' '},
-                {' ','X','X','X','X','X','X','X','X',' '},
-                {' ',' ',' ','X','X','X','X',' ',' ',' '},
-                {' ',' ','X',' ','X','X',' ','X',' ',' '},
-                {' ',' ',' ',' ',' ',' ',' ',' ',' ',' '},
-        };
-
-        SpriteDrawer.drawSprite(graphics, color, array, height, x, y);
-    }
 }
