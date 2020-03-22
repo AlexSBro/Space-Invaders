@@ -5,8 +5,8 @@ public class HunterAlien extends Alien {
     public HunterAlien(int x, int y, int speed, int health, int hitPoints, GameObjectManager gameObjectManager){
         super(x, y, speed, health, hitPoints, gameObjectManager);
 
-        this.width = 100;
-        this.height = 100;
+        this.width = 75;
+        this.height = 75;
     }
 
     public void tick(){
@@ -29,6 +29,11 @@ public class HunterAlien extends Alien {
 
         if (playerCenter == alienCenter)
             this.y += this.speed;
+
+        if (isOutOfBounds()){
+            preventMovingOutOfBounds();
+            this.y += this.speed;
+        }
     }
 
     public void paint(Graphics graphics){
