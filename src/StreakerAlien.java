@@ -1,12 +1,19 @@
 import java.awt.*;
+import java.util.Random;
 
 public class StreakerAlien extends Alien {
 
-    public StreakerAlien(int x, int y, int speed, int health, int hitPoints, GameObjectManager gameObjects) {
-        super(x, y, speed, health, hitPoints, gameObjects);
+    public StreakerAlien(int speed, int health, int hitPoints, GameObjectManager gameObjects) {
+        super(speed, health, hitPoints, gameObjects);
 
         this.width = 50;
         this.height = 50;
+
+        this.y = 0;
+
+        Random random = new Random();
+        this.x = random.nextInt(Board.BOARD_WIDTH - this.width);
+
     }
 
     public void tick() {

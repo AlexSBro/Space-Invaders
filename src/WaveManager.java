@@ -11,8 +11,17 @@ public class WaveManager {
     public WaveManager(GameObjectManager gameObjectManager){
         this.gameObjectManager = gameObjectManager;
 
+        waves.add(generateStreakerAlien(1, 50, 25));
+        waves.add(generateStreakerAlien(1, 50, 25));
+        waves.add(generateStreakerAlien(1, 50, 25));
+        waves.add(generateStreakerAlien(1, 50, 25));
+        waves.add(generateStreakerAlien(1, 50, 25));
+        waves.add(generateStreakerAlien(1, 50, 25));
+        waves.add(generateStreakerAlien(1, 50, 25));
+        waves.add(generateStreakerAlien(1, 50, 25));
+        waves.add(generateStreakerAlien(1, 50, 25));
+        waves.add(generateStreakerAlien(1, 50, 25));
         waves.add(generateBasicAliens(2, 1, 5));
-        waves.add(generateStreakerAlien(4, 100, 25));
         waves.add(generateBasicAliens(4, 2, 10));
         waves.add(generateBasicAliens(8, 3, 10));
         waves.add(generateHunterAlien(2, 50, 150));
@@ -21,7 +30,7 @@ public class WaveManager {
     private ArrayList<GameObject> generateStreakerAlien(int speed, int health, int hitPoints){
         ArrayList<GameObject> wave = new ArrayList<>();
 
-        wave.add(new StreakerAlien(Board.BOARD_WIDTH/2, 0, speed, health, hitPoints, gameObjectManager));
+        wave.add(new StreakerAlien(speed, health, hitPoints, gameObjectManager));
 
         return wave;
     }

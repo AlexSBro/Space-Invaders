@@ -13,6 +13,11 @@ public class Alien extends GameObject {
         this.hitPoints = hitPoints;
     }
 
+    public Alien(int speed, int health, int hitPoints, GameObjectManager gameObjects) {
+        super(speed, health, gameObjects);
+        this.hitPoints = hitPoints;
+    }
+
     public void tick() {
         super.tick();
 

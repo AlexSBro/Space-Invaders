@@ -23,6 +23,11 @@ public class GameObject {
         this.gameObjectManager = gameObjectManager;
     }
 
+    public GameObject(int speed, int health, GameObjectManager gameObjectManager){
+        this.speed = speed;
+        this.health = health;
+        this.gameObjectManager = gameObjectManager;
+    }
 
     public void tick(){
         if (isOutOfBounds())
