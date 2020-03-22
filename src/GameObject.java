@@ -5,8 +5,8 @@ public class GameObject {
 
     protected GameObjectManager gameObjectManager;
 
-    protected int health = 1;
-    private int initialHealth = 1;
+    protected int health;
+    private int initialHealth;
     protected int speed;
 
     protected char[][] spriteDrawing;
@@ -31,6 +31,7 @@ public class GameObject {
     public GameObject(int speed, int health, GameObjectManager gameObjectManager){
         this.speed = speed;
         this.health = health;
+        this.initialHealth = health;
         this.gameObjectManager = gameObjectManager;
     }
 
