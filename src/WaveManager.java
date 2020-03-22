@@ -54,13 +54,15 @@ public class WaveManager {
     }
 
     public ArrayList<GameObject> getNextWave(){
-        waveNumber++;
-        if (waveNumber < waves.size()) {
+        if (waveNumber+1 < waves.size()) {
+            waveNumber++;
             return waves.get(waveNumber);
         }else{
             return null;
         }
     }
 
-
+    public int getWaveNumber() {
+        return waveNumber;
+    }
 }

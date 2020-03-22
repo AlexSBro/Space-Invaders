@@ -5,7 +5,6 @@ import java.awt.Graphics;
 import java.awt.Toolkit;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.io.BufferedWriter;
 
 import javax.swing.JPanel;
 
@@ -102,12 +101,8 @@ public class Board  extends JPanel implements Runnable {
         //background
         graphics.setColor(Color.black);
         graphics.fillRect(0, 0, dimension.width, dimension.height);
-        //health bar
-        graphics.setColor(Color.green);
-        graphics.fillRect(BOARD_WIDTH - 110,BOARD_HEIGHT - 40, gameObjectManager.getPlayer().health, 10);
-        //damage taken
-        graphics.setColor(Color.red);
-        graphics.fillRect(BOARD_WIDTH - 110 + gameObjectManager.getPlayer().health,BOARD_HEIGHT - 40, 100 - gameObjectManager.getPlayer().health, 10);
+
+        HUD.draw(graphics, gameObjectManager.getPlayer().health, gameObjectManager.getWaveNumber() + 1);
 
         for (GameObject object: gameObjectManager.getGameObjects()){
             object.paint(graphics);

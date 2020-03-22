@@ -56,6 +56,10 @@ public class GameObjectManager {
         return ((topA <= bottomB && bottomA >= bottomB) || (bottomA >= topB && bottomA <= bottomB)) && ((rightA >= leftB && leftA <= leftB) || (leftA <= rightB && leftA >= leftB));
     }
 
+    public int getWaveNumber() {
+        return waveManager.getWaveNumber();
+    }
+
     public void addToQue(GameObject gameObject){
         addedObjects.add(gameObject);
     }
