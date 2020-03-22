@@ -21,6 +21,7 @@ public class Alien extends GameObject {
     public void tick() {
         super.tick();
 
+        alienMovementAlgorithm();
         registerHits();
         checkAlienPassedPlayer();
     }
@@ -31,37 +32,6 @@ public class Alien extends GameObject {
 
         if (this.moveRight)
             this.x += speed;
-    }
-
-    public void basicMovementAlgorithm(){
-        alienMovementAlgorithm();
-        if (this.x > Board.BOARD_WIDTH - (200 - this.initialX)) {
-            this.moveLeft = true;
-            this.moveRight = false;
-            this.y += this.height + 5;
-        }
-        if (this.x <= this.initialX) {
-            this.moveRight = true;
-            this.moveLeft = false;
-            this.y += this.height + 5;
-        }
-    }
-
-    public void streakerMovementAlgorithm(){
-        this.y += this.speed;
-    }
-
-    public void hunterMovementAlgorithm(){
-        alienMovementAlgorithm();
-
-        if (gameObjectManager.getPlayer().x > this.x)
-            this.x += this.speed;
-
-        if (gameObjectManager.getPlayer().x < this.x)
-            this.x -= this.speed;
-
-        else if (gameObjectManager.getPlayer().x == this.x)
-            this.y += this.speed;
     }
 
     public void checkAlienPassedPlayer(){
@@ -81,4 +51,6 @@ public class Alien extends GameObject {
             }
         }
     }
+
+
 }

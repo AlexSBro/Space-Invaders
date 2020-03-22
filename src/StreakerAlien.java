@@ -18,8 +18,12 @@ public class StreakerAlien extends Alien {
 
     public void tick() {
         super.tick();
+    }
 
-        streakerMovementAlgorithm();
+    @Override
+    public void alienMovementAlgorithm(){
+        super.alienMovementAlgorithm();
+        this.y += this.speed;
     }
 
     public void paint(Graphics graphics) {
