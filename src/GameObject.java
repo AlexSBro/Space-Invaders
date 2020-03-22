@@ -5,8 +5,8 @@ public class GameObject {
 
     protected GameObjectManager gameObjectManager;
 
-    protected int health;
-    private int initialHealth;
+    protected int health = 1;
+    private int initialHealth = 1;
     protected int speed;
 
     protected char[][] spriteDrawing;
@@ -72,6 +72,7 @@ public class GameObject {
     }
 
     protected float getFloatHealth(){
+
         return health/initialHealth;
     }
 
