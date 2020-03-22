@@ -111,7 +111,7 @@ public class Board  extends JPanel implements Runnable {
 
         //background
         graphics.setColor(Color.black);
-        graphics.fillRect(0, 0, dimension.width, dimension.height);
+        graphics.fillRect(0, 0, Board.BOARD_WIDTH, Board.BOARD_HEIGHT);
 
         HUD.draw(graphics, gameObjectManager.getPlayer().health, gameObjectManager.getWaveNumber() + 1);
 
