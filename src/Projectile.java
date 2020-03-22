@@ -23,7 +23,7 @@ public class Projectile extends GameObject {
 
     @Override
     public void paint(Graphics graphics) {
-        graphics.setColor(Color.cyan);
+        graphics.setColor(Color.white);
         graphics.fillRect(this.x, this.y, width, height);
     }
 }

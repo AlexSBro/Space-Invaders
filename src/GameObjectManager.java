@@ -18,13 +18,10 @@ public class GameObjectManager {
     public GameObjectManager() {
          waveManager = new WaveManager(this);
 
-        player = new Player(Board.BOARD_WIDTH/2, Board.BOARD_HEIGHT-60, 5, 100,this);
+        player = new Player(Board.BOARD_WIDTH/2, Board.BOARD_HEIGHT-70, 4, 100,this);
         gameObjects.add(player);
     }
 
-    public ArrayList<GameObject> getGameObjects() {
-        return gameObjects;
-    }
 
     public void updateObjects(){
 
@@ -37,7 +34,6 @@ public class GameObjectManager {
     }
 
     public void getNextWave(){
-
         ArrayList<GameObject> nextWave = waveManager.getNextWave();
         if (nextWave != null) {
             gameObjects.addAll(nextWave);
@@ -70,6 +66,10 @@ public class GameObjectManager {
 
     public Player getPlayer() {
         return player;
+    }
+
+    public ArrayList<GameObject> getGameObjects() {
+        return gameObjects;
     }
 
     public void spacePressed(){

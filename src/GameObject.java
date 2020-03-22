@@ -15,7 +15,6 @@ public class GameObject {
     protected int height;
 
 
-
     public GameObject(int x, int y, int speed, int health, GameObjectManager gameObjectManager){
         this.x = x;
         this.y = y;
@@ -30,6 +29,13 @@ public class GameObject {
             removeSelf();
     }
 
+    public void hit(int hitPoints){
+        health -= hitPoints;
+        if(health <= 0){
+            removeSelf();
+        }
+    }
+
     public void removeSelf(){
         gameObjectManager.addToRemovalQue(this);
     }
@@ -39,12 +45,4 @@ public class GameObject {
     }
 
     public void paint(Graphics graphics){}
-
-    public void hit(int hitPoints){
-        health -= hitPoints;
-        if(health <= 0){
-            removeSelf();
-        }
-    }
-
 }

@@ -9,27 +9,12 @@ public class StreakerAlien extends Alien {
         this.height = 50;
     }
 
-    @Override
-    public void alienMovementAlgorithm() {
-
-        this.y += speed;
-
-    }
-
-    @Override
     public void tick() {
         super.tick();
 
-        alienMovementAlgorithm();
-        registerHits();
+        streakerMovementAlgorithm();
     }
 
-    @Override
-    public void removeSelf() {
-        super.removeSelf();
-    }
-
-    @Override
     public void paint(Graphics graphics) {
         Color color;
 

@@ -1,45 +1,32 @@
 import java.awt.*;
 
-public class BasicAlien extends Alien {
+public class HunterAlien extends Alien {
 
-    public BasicAlien(int x, int y, int speed, int health, int hitPoints, GameObjectManager gameObjectManager){
+    public HunterAlien(int x, int y, int speed, int health, int hitPoints, GameObjectManager gameObjectManager){
         super(x, y, speed, health, hitPoints, gameObjectManager);
 
-        this.width = 30;
-        this.height = 30;
-
-        this.initialX = x;
-        this.initialY = y;
-
-        moveLeft = false;
-        moveRight = true;
-
-        this.gameObjectManager = gameObjectManager;
+        this.width = 50;
+        this.height = 50;
     }
-
 
     public void tick(){
         super.tick();
 
-        basicMovementAlgorithm();
+        hunterMovementAlgorithm();
     }
-
 
     public void paint(Graphics graphics){
         Color color;
 
         switch (health){
-            case 1:
+            case 10:
                 color = Color.lightGray;
                 break;
-            case 2:
+            case 50:
                 color = Color.gray;
                 break;
-            case 3:
-                color = Color.darkGray;
-                break;
             default:
-                color = Color.lightGray;
+                color = Color.orange;
 
         }
 
