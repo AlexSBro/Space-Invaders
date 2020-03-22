@@ -6,15 +6,15 @@ public class StreakerAlien extends Alien {
     public StreakerAlien(int speed, int health, int hitPoints, GameObjectManager gameObjects) {
         super(speed, health, hitPoints, gameObjects);
 
-        this.width = 50;
-        this.height = 50;
+        this.width = 48;
+        this.height = 48;
 
         this.y = 0;
 
         Random random = new Random();
         this.x = random.nextInt(Board.BOARD_WIDTH - this.width);
 
-        this.color = Color.pink;
+        this.color = ColorBuilder.buildGreen(getFloatHealth());
         this.spriteDrawing = new char[][]{
                 {' ', ' ', ' ', ' ', 'X', 'X', ' ', ' ', ' ', ' '},
                 {' ', ' ', ' ', 'X', 'X', 'X', 'X', ' ', ' ', ' '},

@@ -73,7 +73,6 @@ public class GameObject {
     }
 
     protected float getFloatHealth(){
-
         return health/initialHealth;
     }
 

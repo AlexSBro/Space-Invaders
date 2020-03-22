@@ -19,8 +19,8 @@ public class HunterAlien extends Alien {
         };
         this.color = Color.yellow;
 
-        this.width = 100;
-        this.height = 100;
+        this.width = 64;
+        this.height = 64;
     }
 
     public void tick(){

@@ -12,9 +12,28 @@ public class WaveManager {
         this.gameObjectManager = gameObjectManager;
 
         waves.add(generateStreakerAlien(1, 10, 25));
-        waves.add(generateBasicAliens(8, 3, 10));
-        waves.add(generateHunterAlien(2, 50, 150));
+//        waves.add(generateBasicAliens(8, 3, 10));
+//        waves.add(generateHunterAlien(2, 50, 150));
 
+    }
+
+    private ArrayList<GameObject> generateBasicAliens(int speed, int health, int hitPoints){
+        ArrayList<GameObject> wave = new ArrayList<>();
+
+        int ax = 8;
+        int ay = 8;
+
+        for (int i = 0; i < 10; i++) {
+            BasicAlien basicAlien = new BasicAlien(ax, ay, speed, health, hitPoints, gameObjectManager);
+            ax += 40;
+            if (i == 4) {
+                ax = 8;
+                ay += 40;
+            }
+            wave.add(basicAlien);
+        }
+
+        return wave;
     }
 
     private ArrayList<GameObject> generateStreakerAlien(int speed, int health, int hitPoints){
@@ -29,25 +48,6 @@ public class WaveManager {
         ArrayList<GameObject> wave = new ArrayList<>();
 
         wave.add(new HunterAlien(Board.BOARD_WIDTH/2, 0, speed, health, hitPoints, gameObjectManager));
-
-        return wave;
-    }
-
-    private ArrayList<GameObject> generateBasicAliens(int speed, int health, int hitPoints){
-        ArrayList<GameObject> wave = new ArrayList<>();
-
-        int ax = 10;
-        int ay = 10;
-
-        for (int i = 0; i < 10; i++) {
-            BasicAlien basicAlien = new BasicAlien(ax, ay, speed, health, hitPoints, gameObjectManager);
-            ax += 40;
-            if (i == 4) {
-                ax = 10;
-                ay += 40;
-            }
-            wave.add(basicAlien);
-        }
 
         return wave;
     }

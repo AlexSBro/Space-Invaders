@@ -1,9 +1,12 @@
 import java.awt.*;
 import java.awt.AlphaComposite;
+import java.awt.image.BufferedImage;
 
 public class SpriteDrawer {
 
     public static void drawSprite(Graphics graphics, Color color, char[][] coordinates, int size, int x, int y, float percentHealth){
+
+        color = ColorBuilder.buildGreen(percentHealth);
 
         graphics.setColor(color);
 
@@ -16,7 +19,6 @@ public class SpriteDrawer {
                 }
             }
         }
-
     }
 
 }
