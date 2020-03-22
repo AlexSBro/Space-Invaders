@@ -44,16 +44,6 @@ public class Player extends GameObject {
     public void paint(Graphics graphics){
 
         char[][] array = {
-//                {' ',' ',' ',' ','X','X',' ',' ',' ',' '},
-//                {' ',' ',' ',' ','X','X',' ',' ',' ',' '},
-//                {' ',' ',' ',' ','X','X',' ',' ',' ',' '},
-//                {' ',' ',' ','X','X','X','X',' ',' ',' '},
-//                {' ',' ','X','X','X','X','X','X',' ',' '},
-//                {' ','X','X','X','X','X','X','X','X',' '},
-//                {'X','X','X','X','X','X','X','X','X','X'},
-//                {'X','X','X','X','X','X','X','X','X','X'},
-//                {'X','X','X','X','X','X','X','X','X','X'},
-//                {'X','X','X','X','X','X','X','X','X','X'},
 
                 {' ',' ',' ',' ','X','X',' ',' ',' ',' '},
                 {' ',' ',' ',' ','X','X',' ',' ',' ',' '},
@@ -67,7 +57,7 @@ public class Player extends GameObject {
                 {' ',' ','X','X','X','X','X','X',' ',' '},
         };
 
-        SpriteDrawer.drawSprite(graphics, Color.orange, array, height, x, y);
+        SpriteDrawer.drawSprite(graphics, Color.orange, array, height, x, y, 1);
 
     }
 }

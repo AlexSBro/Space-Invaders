@@ -14,6 +14,21 @@ public class BasicAlien extends Alien {
         moveLeft = false;
         moveRight = true;
 
+        this.spriteDrawing = new char[][] {
+                {' ',' ',' ',' ',' ',' ',' ',' ',' ',' '},
+                {' ',' ','X',' ',' ',' ',' ','X',' ',' '},
+                {' ',' ',' ','X',' ',' ','X',' ',' ',' '},
+                {' ',' ','X','X','X','X','X','X',' ',' '},
+                {' ','X','X',' ','X','X',' ','X','X',' '},
+                {'X','X','X','X','X','X','X','X','X','X'},
+                {'X',' ','X','X','X','X','X','X',' ','X'},
+                {'X',' ','X',' ',' ',' ',' ','X',' ','X'},
+                {' ',' ',' ','X','X','X','X',' ',' ',' '},
+                {' ',' ',' ',' ',' ',' ',' ',' ',' ',' '},
+        };
+        this.color = Color.green;
+
+
         this.gameObjectManager = gameObjectManager;
     }
 
@@ -39,37 +54,4 @@ public class BasicAlien extends Alien {
         }
     }
 
-    public void paint(Graphics graphics){
-        Color color;
-
-        switch (health){
-            case 1:
-                color = Color.lightGray;
-                break;
-            case 2:
-                color = Color.gray;
-                break;
-            case 3:
-                color = Color.darkGray;
-                break;
-            default:
-                color = Color.lightGray;
-
-        }
-
-        char[][] array = {
-                {' ',' ',' ',' ',' ',' ',' ',' ',' ',' '},
-                {' ',' ','X',' ',' ',' ',' ','X',' ',' '},
-                {' ',' ',' ','X',' ',' ','X',' ',' ',' '},
-                {' ',' ','X','X','X','X','X','X',' ',' '},
-                {' ','X','X',' ','X','X',' ','X','X',' '},
-                {'X','X','X','X','X','X','X','X','X','X'},
-                {'X',' ','X','X','X','X','X','X',' ','X'},
-                {'X',' ','X',' ',' ',' ',' ','X',' ','X'},
-                {' ',' ',' ','X','X','X','X',' ',' ',' '},
-                {' ',' ',' ',' ',' ',' ',' ',' ',' ',' '},
-        };
-
-        SpriteDrawer.drawSprite(graphics, color, array, height, x, y);
-    }
 }

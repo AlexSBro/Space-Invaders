@@ -6,7 +6,11 @@ public class GameObject {
     protected GameObjectManager gameObjectManager;
 
     protected int health;
+    private int initialHealth;
     protected int speed;
+
+    protected char[][] spriteDrawing;
+    protected Color color = Color.white;
 
     protected int x;
     protected int y;
@@ -20,6 +24,7 @@ public class GameObject {
         this.y = y;
         this.speed = speed;
         this.health = health;
+        this.initialHealth = health;
         this.gameObjectManager = gameObjectManager;
     }
 
@@ -51,5 +56,14 @@ public class GameObject {
         return x > Board.BOARD_WIDTH || x < -width || y > Board.BOARD_HEIGHT || y + height < 0;
     }
 
-    public void paint(Graphics graphics){}
+    public void paint(Graphics graphics){
+
+        SpriteDrawer.drawSprite(graphics, this.color, spriteDrawing, this.height, this.x, this.y, getFloatHealth());
+
+    }
+
+    protected float getFloatHealth(){
+        return health/initialHealth;
+    }
+
 }

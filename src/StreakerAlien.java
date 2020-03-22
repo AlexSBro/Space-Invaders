@@ -14,6 +14,20 @@ public class StreakerAlien extends Alien {
         Random random = new Random();
         this.x = random.nextInt(Board.BOARD_WIDTH - this.width);
 
+        this.color = Color.pink;
+        this.spriteDrawing = new char[][]{
+                {' ', ' ', ' ', ' ', 'X', 'X', ' ', ' ', ' ', ' '},
+                {' ', ' ', ' ', 'X', 'X', 'X', 'X', ' ', ' ', ' '},
+                {' ', ' ', 'X', 'X', 'X', 'X', 'X', 'X', ' ', ' '},
+                {' ', 'X', 'X', ' ', 'X', 'X', ' ', 'X', 'X', ' '},
+                {' ', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', ' '},
+                {' ', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', ' '},
+                {' ', ' ', ' ', 'X', ' ', ' ', 'X', ' ', ' ', ' '},
+                {' ', ' ', 'X', ' ', 'X', 'X', ' ', 'X', ' ', ' '},
+                {' ', 'X', ' ', 'X', ' ', ' ', 'X', ' ', 'X', ' '},
+                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '},
+        };
+
     }
 
     public void tick() {
@@ -26,33 +40,4 @@ public class StreakerAlien extends Alien {
         this.y += this.speed;
     }
 
-    public void paint(Graphics graphics) {
-        Color color;
-
-        switch (health){
-            case 10:
-                color = Color.lightGray;
-                break;
-            case 50:
-                color = Color.gray;
-                break;
-            default:
-                color = Color.darkGray;
-
-        }
-
-        char[][] array = {
-                {' ',' ',' ',' ','X','X',' ',' ',' ',' '},
-                {' ',' ',' ','X','X','X','X',' ',' ',' '},
-                {' ',' ','X','X','X','X','X','X',' ',' '},
-                {' ','X','X',' ','X','X',' ','X','X',' '},
-                {' ','X','X','X','X','X','X','X','X',' '},
-                {' ','X','X','X','X','X','X','X','X',' '},
-                {' ',' ',' ','X',' ',' ','X',' ',' ',' '},
-                {' ',' ','X',' ','X','X',' ','X',' ',' '},
-                {' ','X',' ','X',' ',' ','X',' ','X',' '},
-                {' ',' ',' ',' ',' ',' ',' ',' ',' ',' '},
-        };
-
-        SpriteDrawer.drawSprite(graphics, color, array, height, x, y);    }
 }
