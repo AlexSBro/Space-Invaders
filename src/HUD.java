@@ -5,6 +5,9 @@ public class HUD {
     public static void draw(Graphics graphics, int health, int level){
         drawHealthBar(graphics, health);
         drawLevel(graphics, level);
+        if(health <= 0){
+            drawGameOver(graphics);
+        }
     }
 
     private static void drawLevel(Graphics graphics, int level){
@@ -13,6 +16,14 @@ public class HUD {
 
         graphics.setFont(font);
         graphics.drawString(String.valueOf(level),30, 30);
+    }
+
+    private static void drawGameOver(Graphics graphics){
+        graphics.setColor(Color.red);
+        Font font = new Font("Monotype Corsiva", Font.PLAIN, 50);
+
+        graphics.setFont(font);
+        graphics.drawString("GAME OVER",180, Board.BOARD_HEIGHT/2 - 25);
     }
 
     private static void drawHealthBar(Graphics graphics, int health) {

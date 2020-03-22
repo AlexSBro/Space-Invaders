@@ -3,7 +3,9 @@ import java.awt.*;
 public class SpriteDrawer {
 
     public static void drawSprite(Graphics graphics, Color color, char[][] coordinates, int size, int x, int y){
+
         graphics.setColor(color);
+
         int tenth = size/10;
 
         for(int innerY = 0; innerY < coordinates.length; innerY++){

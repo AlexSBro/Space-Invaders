@@ -12,6 +12,8 @@ import javax.swing.JPanel;
 public class Board  extends JPanel implements Runnable {
     boolean running = true;
 
+    boolean originalSpacePress = true;
+
     private Dimension dimension;
     public  static int BOARD_WIDTH = 640;
     public  static int BOARD_HEIGHT = 640;
@@ -72,9 +74,15 @@ public class Board  extends JPanel implements Runnable {
 
         public void keyReleased(KeyEvent e) {
             int key = e.getKeyCode();
-            gameObjectManager.rightKeyReleased();
-            gameObjectManager.leftKeyReleased();
-            gameObjectManager.rightKeyReleased();
+            if(key==39){
+                gameObjectManager.rightKeyReleased();
+            }
+            if (key == 37){
+                gameObjectManager.leftKeyReleased();
+            }
+            if (key == 32){
+                originalSpacePress = true;
+            }
 
         }
 
@@ -88,7 +96,10 @@ public class Board  extends JPanel implements Runnable {
                 gameObjectManager.leftKeyPressed();
             }
             if (key == 32){
-                gameObjectManager.spacePressed();
+                if(originalSpacePress) {
+                    gameObjectManager.fireShot(true);
+                    originalSpacePress = false;
+                }
             }
 
         }

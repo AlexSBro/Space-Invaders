@@ -19,9 +19,9 @@ public class Player extends GameObject {
     }
 
     private void playerShooting() {
-        if(gameObjectManager.isSpacePressed()) {
+        if(gameObjectManager.isFireShot()) {
             gameObjectManager.addToQue(new Projectile(this.x + this.width/2 - 2, this.y - 20, 10, gameObjectManager));
-            gameObjectManager.spaceReleased();
+            gameObjectManager.fireShot(false);
         }
     }
 

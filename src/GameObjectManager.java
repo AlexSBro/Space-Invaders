@@ -4,7 +4,8 @@ public class GameObjectManager {
 
     private boolean rightKeyPressed;
     private boolean leftKeyPressed;
-    private boolean spacePressed;
+
+    private boolean fireShot = false;
 
     private WaveManager waveManager;
 
@@ -76,11 +77,12 @@ public class GameObjectManager {
         return gameObjects;
     }
 
-    public void spacePressed(){
-        this.spacePressed = true;
+    public boolean isFireShot() {
+        return fireShot;
     }
-    public void spaceReleased(){
-        this.spacePressed = false;
+
+    public void fireShot(boolean fireShot){
+        this.fireShot = fireShot;
     }
 
     public void rightKeyPressed(){
@@ -103,8 +105,6 @@ public class GameObjectManager {
     public boolean isLeftKeyPressed() {
         return leftKeyPressed;
     }
-    public boolean isSpacePressed() {
-        return spacePressed;
-    }
+
 }
 
