@@ -14,7 +14,6 @@ public class StreakerAlien extends Alien {
         Random random = new Random();
         this.x = random.nextInt(Board.BOARD_WIDTH - this.width);
 
-        this.color = ColorBuilder.buildGreen(getFloatHealth());
         this.spriteDrawing = new char[][]{
                 {' ', ' ', ' ', ' ', 'X', 'X', ' ', ' ', ' ', ' '},
                 {' ', ' ', ' ', 'X', 'X', 'X', 'X', ' ', ' ', ' '},
@@ -38,6 +37,11 @@ public class StreakerAlien extends Alien {
     public void alienMovementAlgorithm(){
         super.alienMovementAlgorithm();
         this.y += this.speed;
+    }
+
+    @Override
+    protected Color getColor() {
+        return ColorBuilder.buildRed(getHealthAlph());
     }
 
 }

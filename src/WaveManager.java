@@ -12,8 +12,8 @@ public class WaveManager {
         this.gameObjectManager = gameObjectManager;
 
         waves.add(generateStreakerAlien(1, 10, 25));
-//        waves.add(generateBasicAliens(8, 3, 10));
-//        waves.add(generateHunterAlien(2, 50, 150));
+        waves.add(generateBasicAliens(8, 3, 10));
+        waves.add(generateHunterAlien(2, 50, 150));
 
     }
 

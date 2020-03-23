@@ -10,7 +10,6 @@ public class GameObject {
     protected int speed;
 
     protected char[][] spriteDrawing;
-    protected Color color = Color.white;
 
     protected int x;
     protected int y;
@@ -68,12 +67,20 @@ public class GameObject {
 
     public void paint(Graphics graphics){
 
-        SpriteDrawer.drawSprite(graphics, this.color, spriteDrawing, this.height, this.x, this.y, getFloatHealth());
+        SpriteDrawer.drawSprite(graphics, getColor(), spriteDrawing, this.height, this.x, this.y);
 
     }
 
-    protected float getFloatHealth(){
-        return health/initialHealth;
+    protected float getHealthAlph(){
+        float healthDecimal = (float) health/(float) initialHealth;
+        return healthDecimal/2 + 0.5f;
     }
+
+    protected Color getColor(){
+
+        return ColorBuilder.buildGreen(getHealthAlph());
+
+    }
+
 
 }

@@ -8,6 +8,20 @@ public class Player extends GameObject {
         this.width = 40;
         this.height = 40;
 
+        this.spriteDrawing = new char[][] {
+
+                {' ',' ',' ',' ','X','X',' ',' ',' ',' '},
+                {' ',' ',' ',' ','X','X',' ',' ',' ',' '},
+                {' ',' ',' ',' ','X','X',' ',' ',' ',' '},
+                {' ',' ',' ',' ','X','X',' ',' ',' ',' '},
+                {' ',' ',' ',' ','X','X',' ',' ',' ',' '},
+                {' ',' ',' ',' ','X','X',' ',' ',' ',' '},
+                {' ',' ','X','X','X','X','X','X',' ',' '},
+                {' ','X','X','X','X','X','X','X','X',' '},
+                {' ','X','X','X','X','X','X','X','X',' '},
+                {' ',' ','X','X','X','X','X','X',' ',' '},
+        };
+
     }
 
     public void tick(){
@@ -36,23 +50,9 @@ public class Player extends GameObject {
         preventMovingOutOfBounds();
     }
 
-    public void paint(Graphics graphics){
-
-        char[][] array = {
-
-                {' ',' ',' ',' ','X','X',' ',' ',' ',' '},
-                {' ',' ',' ',' ','X','X',' ',' ',' ',' '},
-                {' ',' ',' ',' ','X','X',' ',' ',' ',' '},
-                {' ',' ',' ',' ','X','X',' ',' ',' ',' '},
-                {' ',' ',' ',' ','X','X',' ',' ',' ',' '},
-                {' ',' ',' ',' ','X','X',' ',' ',' ',' '},
-                {' ',' ','X','X','X','X','X','X',' ',' '},
-                {' ','X','X','X','X','X','X','X','X',' '},
-                {' ','X','X','X','X','X','X','X','X',' '},
-                {' ',' ','X','X','X','X','X','X',' ',' '},
-        };
-
-        SpriteDrawer.drawSprite(graphics, Color.orange, array, height, x, y, 1);
-
+    @Override
+    protected Color getColor() {
+        return ColorBuilder.buildWhite(getHealthAlph());
     }
+
 }

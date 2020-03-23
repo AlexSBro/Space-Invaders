@@ -17,7 +17,6 @@ public class HunterAlien extends Alien {
                 {' ',' ','X',' ','X','X',' ','X',' ',' '},
                 {' ',' ',' ',' ',' ',' ',' ',' ',' ',' '},
         };
-        this.color = Color.yellow;
 
         this.width = 64;
         this.height = 64;
@@ -48,6 +47,11 @@ public class HunterAlien extends Alien {
             preventMovingOutOfBounds();
             this.y += this.speed;
         }
+    }
+
+    @Override
+    protected Color getColor() {
+        return ColorBuilder.buildBlue(getHealthAlph());
     }
 
 }

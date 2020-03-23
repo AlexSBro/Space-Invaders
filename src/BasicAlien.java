@@ -26,8 +26,6 @@ public class BasicAlien extends Alien {
                 {' ',' ',' ','X','X','X','X',' ',' ',' '},
                 {' ',' ',' ',' ',' ',' ',' ',' ',' ',' '},
         };
-        this.color = Color.green;
-
 
         this.gameObjectManager = gameObjectManager;
     }
@@ -52,6 +50,11 @@ public class BasicAlien extends Alien {
             this.moveLeft = false;
             this.y += this.height + 4;
         }
+    }
+
+    @Override
+    protected Color getColor() {
+        return ColorBuilder.buildGreen(getHealthAlph());
     }
 
 }
