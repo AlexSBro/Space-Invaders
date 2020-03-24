@@ -4,12 +4,10 @@ import java.util.ArrayList;
 public class Projectile extends GameObject {
 
     public Projectile(int x, int y, int speed, GameObjectManager gameObjectManager) {
-        super(x, y, speed, 1, gameObjectManager);
+        super(x, y, 4, 20, speed, 1, gameObjectManager);
 
         this.gameObjectManager = gameObjectManager;
 
-        this.height = 20;
-        this.width = 4;
     }
 
     @Override

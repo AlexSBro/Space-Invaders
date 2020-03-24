@@ -1,5 +1,4 @@
 import java.awt.*;
-import java.util.ArrayList;
 
 public class GameObject {
 
@@ -18,16 +17,21 @@ public class GameObject {
     protected int height;
 
 
-    public GameObject(int x, int y, int speed, int health, GameObjectManager gameObjectManager){
+    public GameObject(int x, int y, int width, int height, int speed, int health, GameObjectManager gameObjectManager){
         this.x = x;
         this.y = y;
+        this.width = width;
+        this.height = height;
+
         this.speed = speed;
         this.health = health;
         this.initialHealth = health;
         this.gameObjectManager = gameObjectManager;
     }
 
-    public GameObject(int speed, int health, GameObjectManager gameObjectManager){
+    public GameObject(int width, int height, int speed, int health, GameObjectManager gameObjectManager){
+        this.width = width;
+        this.height = height;
         this.speed = speed;
         this.health = health;
         this.initialHealth = health;
@@ -48,8 +52,12 @@ public class GameObject {
             health -= hitPoints;
     }
 
+
     public void removeSelf(){
         gameObjectManager.addToRemovalQue(this);
+        if(this instanceof Alien){
+            gameObjectManager.addToQue(new Explosion(x, y, width, height, speed, gameObjectManager));
+        }
     }
 
     public boolean isOutOfBounds(){
@@ -71,14 +79,14 @@ public class GameObject {
 
     }
 
-    protected float getHealthAlph(){
+    protected float getHealthAlpha(){
         float healthDecimal = (float) health/(float) initialHealth;
         return healthDecimal/2 + 0.5f;
     }
 
     protected Color getColor(){
 
-        return ColorBuilder.buildGreen(getHealthAlph());
+        return ColorBuilder.buildGreen(getHealthAlpha());
 
     }
 

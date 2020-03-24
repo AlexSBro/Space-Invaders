@@ -4,10 +4,7 @@ import java.util.Random;
 public class StreakerAlien extends Alien {
 
     public StreakerAlien(int speed, int health, int hitPoints, GameObjectManager gameObjects) {
-        super(speed, health, hitPoints, gameObjects);
-
-        this.width = 48;
-        this.height = 48;
+        super(48, 48, speed, health, hitPoints, gameObjects);
 
         this.y = 0;
 
@@ -41,7 +38,7 @@ public class StreakerAlien extends Alien {
 
     @Override
     protected Color getColor() {
-        return ColorBuilder.buildRed(getHealthAlph());
+        return ColorBuilder.buildRed(getHealthAlpha());
     }
 
 }

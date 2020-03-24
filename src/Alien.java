@@ -8,13 +8,13 @@ public class Alien extends GameObject {
     protected boolean moveRight;
     protected boolean moveLeft;
 
-    public Alien(int x, int y, int speed, int health, int hitPoints, GameObjectManager gameObjects) {
-        super(x, y, speed, health, gameObjects);
+    public Alien(int x, int y, int width, int height, int speed, int health, GameObjectManager gameObjects) {
+        super(x, y, width, height, speed, health, gameObjects);
         this.hitPoints = hitPoints;
     }
 
-    public Alien(int speed, int health, int hitPoints, GameObjectManager gameObjects) {
-        super(speed, health, gameObjects);
+    public Alien(int width, int height, int speed, int health, int hitPoints, GameObjectManager gameObjects) {
+        super(width, height, speed, health, gameObjects);
         this.hitPoints = hitPoints;
     }
 

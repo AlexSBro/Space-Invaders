@@ -3,7 +3,7 @@ import java.awt.*;
 public class HunterAlien extends Alien {
 
     public HunterAlien(int x, int y, int speed, int health, int hitPoints, GameObjectManager gameObjectManager){
-        super(x, y, speed, health, hitPoints, gameObjectManager);
+        super(64, 64, speed, health, hitPoints, gameObjectManager);
 
         this.spriteDrawing = new char[][] {
                 {' ',' ',' ',' ','X','X',' ',' ',' ',' '},
@@ -18,8 +18,6 @@ public class HunterAlien extends Alien {
                 {' ',' ',' ',' ',' ',' ',' ',' ',' ',' '},
         };
 
-        this.width = 64;
-        this.height = 64;
     }
 
     public void tick(){
@@ -51,7 +49,7 @@ public class HunterAlien extends Alien {
 
     @Override
     protected Color getColor() {
-        return ColorBuilder.buildBlue(getHealthAlph());
+        return ColorBuilder.buildBlue(getHealthAlpha());
     }
 
 }

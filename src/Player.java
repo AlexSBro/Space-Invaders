@@ -3,10 +3,8 @@ import java.awt.*;
 public class Player extends GameObject {
 
     public Player(int x, int y, int s, int health,  GameObjectManager gameObjectManager){
-        super(x, y, s, health, gameObjectManager);
+        super(x, y, 48,  48, s, health, gameObjectManager);
 
-        this.width = 40;
-        this.height = 40;
 
         this.spriteDrawing = new char[][] {
 
@@ -52,7 +50,7 @@ public class Player extends GameObject {
 
     @Override
     protected Color getColor() {
-        return ColorBuilder.buildWhite(getHealthAlph());
+        return ColorBuilder.buildWhite(getHealthAlpha());
     }
 
 }

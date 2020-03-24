@@ -5,9 +5,6 @@ public class BasicAlien extends Alien {
     public BasicAlien(int x, int y, int speed, int health, int hitPoints, GameObjectManager gameObjectManager){
         super(x, y, speed, health, hitPoints, gameObjectManager);
 
-        this.width = 32;
-        this.height = 32;
-
         this.initialX = x;
         this.initialY = y;
 
@@ -54,7 +51,7 @@ public class BasicAlien extends Alien {
 
     @Override
     protected Color getColor() {
-        return ColorBuilder.buildGreen(getHealthAlph());
+        return ColorBuilder.buildGreen(getHealthAlpha());
     }
 
 }
