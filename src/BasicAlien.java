@@ -3,7 +3,7 @@ import java.awt.*;
 public class BasicAlien extends Alien {
 
     public BasicAlien(int x, int y, int speed, int health, int hitPoints, GameObjectManager gameObjectManager){
-        super(x, y, speed, health, hitPoints, gameObjectManager);
+        super(x, y, 32, 32, speed, health, hitPoints, gameObjectManager);
 
         this.initialX = x;
         this.initialY = y;
