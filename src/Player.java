@@ -3,21 +3,38 @@ import java.awt.*;
 public class Player extends GameObject {
 
     public Player(int speed, int health,  GameObjectManager gameObjectManager){
-        super(Settings.BOARD_WIDTH/2 - 48/2, Settings.BOARD_HEIGHT - 70, 32,  30, speed, health, gameObjectManager);
+        super(Settings.BOARD_WIDTH/2 - 30/2, Settings.BOARD_HEIGHT - 70, 30,  32, speed, health, gameObjectManager);
 
 
         this.spriteDrawing = new char[][] {
 
-                {' ',' ',' ','X','X',' ',' ',' '},
-                {' ',' ',' ','X','X',' ',' ',' '},
-                {' ',' ',' ','X','X',' ',' ',' '},
-                {' ',' ',' ','X','X',' ',' ',' '},
-                {' ',' ',' ','X','X',' ',' ',' '},
-                {' ',' ',' ','X','X',' ',' ',' '},
-                {' ','X','X','X','X','X','X',' '},
-                {'X','X','X','X','X','X','X','X'},
-                {'X','X','X','X','X','X','X','X'},
-                {' ','X','X',' ',' ','X','X',' '},
+                {' ',' ',' ',' ',' ',' ',' ','X',' ',' ',' ',' ',' ',' ',' '},
+                {' ',' ',' ',' ',' ',' ',' ','X',' ',' ',' ',' ',' ',' ',' '},
+                {' ',' ',' ',' ',' ',' ',' ','X',' ',' ',' ',' ',' ',' ',' '},
+                {' ',' ',' ',' ',' ',' ','X','X','X',' ',' ',' ',' ',' ',' '},
+                {' ',' ',' ',' ',' ',' ','X','X','X',' ',' ',' ',' ',' ',' '},
+                {' ',' ',' ',' ',' ',' ','X','X','X',' ',' ',' ',' ',' ',' '},
+                {' ',' ',' ','o',' ',' ','X','X','X',' ',' ','o',' ',' ',' '},
+                {' ',' ',' ','o',' ','X','X','X','X','X',' ','o',' ',' ',' '},
+                {'o',' ',' ','X','o','X','X','o','X','X','o','X',' ',' ','o'},
+                {'o',' ',' ','o','X','X','o','o','o','X','X','o',' ',' ','o'},
+                {'X',' ',' ','X','X','X','o','X','o','X','X','X',' ',' ','X'},
+                {'X',' ','X','X','X','X','X','X','X','X','X','X','X',' ','X'},
+                {'X','X','X','X','X','o','X','X','X','o','X','X','X','X','X'},
+                {'X','X','X',' ','o','o','X','o','X','o','o',' ','X','X','X'},
+                {'X','X',' ',' ','o','o',' ','o',' ','o','o',' ',' ','X','X'},
+                {'X',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','X'},
+
+//                {' ',' ',' ','X','X',' ',' ',' '},
+//                {' ',' ',' ','X','X',' ',' ',' '},
+//                {' ',' ',' ','X','X',' ',' ',' '},
+//                {' ',' ',' ','X','X',' ',' ',' '},
+//                {' ',' ',' ','X','X',' ',' ',' '},
+//                {' ',' ',' ','X','X',' ',' ',' '},
+//                {' ','X','X','X','X','X','X',' '},
+//                {'X','X','X','X','X','X','X','X'},
+//                {'X','X','X','X','X','X','X','X'},
+//                {' ','X','X',' ',' ','X','X',' '},
         };
 
     }
@@ -32,7 +49,7 @@ public class Player extends GameObject {
 
     private void playerShooting() {
         if(gameObjectManager.isFireShot()) {
-            gameObjectManager.addToQue(new Projectile(this.x + this.width/2, this.y - 20, 10, gameObjectManager));
+            gameObjectManager.addToQue(new Projectile(this.x + this.width/2, this.y - 10, 10, gameObjectManager));
             gameObjectManager.fireShot(false);
         }
     }
@@ -50,6 +67,11 @@ public class Player extends GameObject {
 
     @Override
     protected Color getColor() {
+        return Color.white;
+    }
+
+    @Override
+    protected Color getSecondaryColor() {
         return ColorBuilder.buildSoftOrange(getHealthAlpha());
     }
 

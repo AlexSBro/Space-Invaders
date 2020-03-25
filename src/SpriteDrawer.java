@@ -16,7 +16,7 @@ public class SpriteDrawer {
                 if(coordinates[innerY][innerX] == 'X'){
                     graphics.fillRect((int)(x + innerX*xRatio), (int)(y + innerY*yRatio), (int) xRatio, (int) yRatio);
                 }
-                else if(coordinates[innerY][innerX] == 'x'){
+                else if(coordinates[innerY][innerX] == 'o'){
                     graphics.setColor(color2);
                     graphics.fillRect((int) (x + innerX*xRatio), (int) (y + innerY*yRatio), (int) xRatio, (int) yRatio);
                     graphics.setColor(color1);
