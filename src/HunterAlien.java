@@ -50,7 +50,7 @@ public class HunterAlien extends Alien {
         if (playerCenter < alienCenter)
             this.x -= this.speed;
 
-        if (playerCenter == alienCenter)
+        if (playerCenter <= alienCenter + this.speed && playerCenter >= alienCenter - this.speed)
             this.y += this.speed;
 
         if (isOutOfBounds()){
