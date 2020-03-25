@@ -7,7 +7,7 @@ public class ColorBuilder {
     }
 
     public static Color buildSoftRed(float alpha){
-        return new Color(0.666f, .111f, 0f, alpha);
+        return new Color(.777f, .111f, 0f, alpha);
     }
 
     public static Color buildGreen(float alpha){
@@ -27,7 +27,7 @@ public class ColorBuilder {
     }
 
     public static Color buildRedOrange(float alpha){
-        return new Color(1f, 0.333f, 0f, alpha);
+        return new Color(1f, 0.5f, 0f, alpha);
     }
 
     public static Color buildYellow(float alpha){
