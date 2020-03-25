@@ -19,7 +19,7 @@ public class GameObjectManager {
     public GameObjectManager() {
          waveManager = new WaveManager(this);
 
-        player = new Player(Board.BOARD_WIDTH/2, Board.BOARD_HEIGHT-70, 8, 100,this);
+        player = new Player(8, 100,this);
         gameObjects.add(player);
     }
 

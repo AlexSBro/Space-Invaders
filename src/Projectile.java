@@ -3,8 +3,8 @@ import java.util.ArrayList;
 
 public class Projectile extends GameObject {
 
-    public Projectile(int x, int y, int speed, GameObjectManager gameObjectManager) {
-        super(x, y, 4, 20, speed, 1, gameObjectManager);
+    public Projectile(int centerx, int y, int speed, GameObjectManager gameObjectManager) {
+        super(centerx - 4/2, y, 4, 20, speed, 1, gameObjectManager);
 
         this.gameObjectManager = gameObjectManager;
 

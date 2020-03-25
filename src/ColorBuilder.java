@@ -30,7 +30,7 @@ public class ColorBuilder {
         return new Color(1f, 0.666f, 0f, alpha);
     }
 
-    public static Color buildRedOrange(float alpha){
+    public static Color buildSoftOrange(float alpha){
         return new Color(1f, 0.5f, 0f, alpha);
     }
 

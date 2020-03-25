@@ -61,12 +61,12 @@ public class GameObject {
     }
 
     public boolean isOutOfBounds(){
-        return x + width > Board.BOARD_WIDTH || x < 0 || y > Board.BOARD_HEIGHT || y + height < 0;
+        return x + width > Settings.BOARD_WIDTH || x < 0 || y > Settings.BOARD_HEIGHT || y + height < 0;
     }
 
     public void preventMovingOutOfBounds() {
-        if (this.x > Board.BOARD_WIDTH - this.width){
-            this.x = Board.BOARD_WIDTH - this.width;
+        if (this.x > Settings.BOARD_WIDTH - this.width){
+            this.x = Settings.BOARD_WIDTH - this.width;
         }
         if (this.x < 0){
             this.x = 0;

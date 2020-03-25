@@ -2,22 +2,22 @@ import java.awt.*;
 
 public class Player extends GameObject {
 
-    public Player(int x, int y, int s, int health,  GameObjectManager gameObjectManager){
-        super(x, y, 48,  48, s, health, gameObjectManager);
+    public Player(int speed, int health,  GameObjectManager gameObjectManager){
+        super(Settings.BOARD_WIDTH/2 - 48/2, Settings.BOARD_HEIGHT - 70, 48,  48, speed, health, gameObjectManager);
 
 
         this.spriteDrawing = new char[][] {
 
-                {' ',' ',' ',' ','X','X',' ',' ',' ',' '},
-                {' ',' ',' ',' ','X','X',' ',' ',' ',' '},
-                {' ',' ',' ',' ','X','X',' ',' ',' ',' '},
-                {' ',' ',' ',' ','X','X',' ',' ',' ',' '},
-                {' ',' ',' ',' ','X','X',' ',' ',' ',' '},
-                {' ',' ',' ',' ','X','X',' ',' ',' ',' '},
-                {' ',' ','X','X','X','X','X','X',' ',' '},
-                {' ','X','X','X','X','X','X','X','X',' '},
-                {' ','X','X','X','X','X','X','X','X',' '},
-                {' ',' ','X','X',' ',' ','X','X',' ',' '},
+                {' ',' ',' ','X','X',' ',' ',' '},
+                {' ',' ',' ','X','X',' ',' ',' '},
+                {' ',' ',' ','X','X',' ',' ',' '},
+                {' ',' ',' ','X','X',' ',' ',' '},
+                {' ',' ',' ','X','X',' ',' ',' '},
+                {' ',' ',' ','X','X',' ',' ',' '},
+                {' ','X','X','X','X','X','X',' '},
+                {'X','X','X','X','X','X','X','X'},
+                {'X','X','X','X','X','X','X','X'},
+                {' ','X','X',' ',' ','X','X',' '},
         };
 
     }
@@ -32,7 +32,7 @@ public class Player extends GameObject {
 
     private void playerShooting() {
         if(gameObjectManager.isFireShot()) {
-            gameObjectManager.addToQue(new Projectile(this.x + this.width/2 - 2, this.y - 20, 10, gameObjectManager));
+            gameObjectManager.addToQue(new Projectile(this.x, this.y - 20, 10, gameObjectManager));
             gameObjectManager.fireShot(false);
         }
     }
@@ -50,7 +50,7 @@ public class Player extends GameObject {
 
     @Override
     protected Color getColor() {
-        return ColorBuilder.buildOrange(getHealthAlpha());
+        return ColorBuilder.buildSoftOrange(getHealthAlpha());
     }
 
 }

@@ -23,16 +23,16 @@ public class HUD {
         Font font = new Font("Monotype Corsiva", Font.PLAIN, 50);
 
         graphics.setFont(font);
-        graphics.drawString("GAME OVER",180, Board.BOARD_HEIGHT/2 - 25);
+        graphics.drawString("GAME OVER",180, Settings.BOARD_HEIGHT/2 - 25);
     }
 
     private static void drawHealthBar(Graphics graphics, int health) {
         //health bar
         graphics.setColor(Color.green);
-        graphics.fillRect(Board.BOARD_WIDTH - 110,Board.BOARD_HEIGHT - 40, health, 10);
+        graphics.fillRect(Settings.BOARD_WIDTH - 110,Settings.BOARD_HEIGHT - 40, health, 10);
         //damage taken
         graphics.setColor(Color.red);
-        graphics.fillRect(Board.BOARD_WIDTH - 110 + health,Board.BOARD_HEIGHT - 40, 100 - health, 10);
+        graphics.fillRect(Settings.BOARD_WIDTH - 110 + health,Settings.BOARD_HEIGHT - 40, 100 - health, 10);
     }
 
 }

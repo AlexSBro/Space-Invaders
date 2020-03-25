@@ -47,7 +47,7 @@ public class WaveManager {
     private ArrayList<GameObject> generateHunterAlien(int speed, int health, int hitPoints){
         ArrayList<GameObject> wave = new ArrayList<>();
 
-        wave.add(new HunterAlien(Board.BOARD_WIDTH/2, 0, speed, health, hitPoints, gameObjectManager));
+        wave.add(new HunterAlien(speed, health, hitPoints, gameObjectManager));
 
         return wave;
     }

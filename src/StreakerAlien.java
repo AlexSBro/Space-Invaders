@@ -9,7 +9,7 @@ public class StreakerAlien extends Alien {
         this.y = 0;
 
         Random random = new Random();
-        this.x = random.nextInt(Board.BOARD_WIDTH - this.width);
+        this.x = random.nextInt(Settings.BOARD_WIDTH - this.width);
 
         this.spriteDrawing = new char[][]{
                 {' ', ' ', ' ', ' ', 'X', 'X', ' ', ' ', ' ', ' '},

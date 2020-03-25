@@ -14,10 +14,6 @@ public class Board  extends JPanel implements Runnable {
 
     boolean originalSpacePress = true;
 
-    private Dimension dimension;
-    public  static int BOARD_WIDTH = 640;
-    public  static int BOARD_HEIGHT = 640;
-
     private Thread animator;
 
     private GameObjectManager gameObjectManager = new GameObjectManager();
@@ -25,8 +21,6 @@ public class Board  extends JPanel implements Runnable {
     public Board() {
         addKeyListener(new TAdapter());
         setFocusable(true);
-        dimension = new Dimension(BOARD_WIDTH, BOARD_HEIGHT);
-
         setBackground(Color.black);
 
         if (animator == null || !running) {
@@ -111,7 +105,7 @@ public class Board  extends JPanel implements Runnable {
 
         //background
         graphics.setColor(Color.black);
-        graphics.fillRect(0, 0, Board.BOARD_WIDTH, Board.BOARD_HEIGHT);
+        graphics.fillRect(0, 0, Settings.BOARD_WIDTH, Settings.BOARD_HEIGHT);
 
         HUD.draw(graphics, gameObjectManager.getPlayer().health, gameObjectManager.getWaveNumber() + 1);
 

@@ -37,7 +37,7 @@ public class BasicAlien extends Alien {
     public void alienMovementAlgorithm(){
         super.alienMovementAlgorithm();
 
-        if (this.x > Board.BOARD_WIDTH - (210 - this.initialX)) {
+        if (this.x > Settings.BOARD_WIDTH - (210 - this.initialX)) {
             this.moveLeft = true;
             this.moveRight = false;
             this.y += this.height + 4;

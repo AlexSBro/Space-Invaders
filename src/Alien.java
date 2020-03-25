@@ -35,7 +35,7 @@ public class Alien extends GameObject {
     }
 
     public void checkAlienPassedPlayer(){
-        if(this.y + this.height >= Board.BOARD_HEIGHT - 60){
+        if(this.y + this.height >= Settings.BOARD_HEIGHT - 60){
             gameObjectManager.getPlayer().hit(this.hitPoints);
             removeSelf();
         }
