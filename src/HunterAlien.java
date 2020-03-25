@@ -49,7 +49,7 @@ public class HunterAlien extends Alien {
 
     @Override
     protected Color getColor() {
-        return ColorBuilder.buildBlue(getHealthAlpha());
+        return ColorBuilder.buildYellow(getHealthAlpha());
     }
 
 }

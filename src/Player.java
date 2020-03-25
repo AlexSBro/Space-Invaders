@@ -17,7 +17,7 @@ public class Player extends GameObject {
                 {' ',' ','X','X','X','X','X','X',' ',' '},
                 {' ','X','X','X','X','X','X','X','X',' '},
                 {' ','X','X','X','X','X','X','X','X',' '},
-                {' ',' ','X','X','X','X','X','X',' ',' '},
+                {' ',' ','X','X',' ',' ','X','X',' ',' '},
         };
 
     }
@@ -50,7 +50,7 @@ public class Player extends GameObject {
 
     @Override
     protected Color getColor() {
-        return ColorBuilder.buildWhite(getHealthAlpha());
+        return ColorBuilder.buildOrange(getHealthAlpha());
     }
 
 }

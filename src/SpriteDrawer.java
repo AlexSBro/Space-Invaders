@@ -15,6 +15,11 @@ public class SpriteDrawer {
                 if(coordinates[innerY][innerX] == 'X'){
                     graphics.fillRect(x + innerX*tenth, y + innerY*tenth, tenth, tenth);
                 }
+                else if(coordinates[innerY][innerX] == 'x'){
+                    graphics.setColor(ColorBuilder.buildRedOrange(.8f));
+                    graphics.fillRect(x + innerX*tenth, y + innerY*tenth, tenth, tenth);
+                    graphics.setColor(color);
+                }
             }
         }
     }
