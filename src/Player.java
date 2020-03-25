@@ -5,7 +5,6 @@ public class Player extends GameObject {
     public Player(int speed, int health,  GameObjectManager gameObjectManager){
         super(Settings.BOARD_WIDTH/2 - 30/2, Settings.BOARD_HEIGHT - 70, 30,  32, speed, health, gameObjectManager);
 
-
         this.spriteDrawing = new char[][] {
 
                 {' ',' ',' ',' ',' ',' ',' ','X',' ',' ',' ',' ',' ',' ',' '},
@@ -23,7 +22,7 @@ public class Player extends GameObject {
                 {'X','X','X','X','X','o','X','X','X','o','X','X','X','X','X'},
                 {'X','X','X',' ','o','o','X','o','X','o','o',' ','X','X','X'},
                 {'X','X',' ',' ','o','o',' ','o',' ','o','o',' ',' ','X','X'},
-                {'X',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','X'},
+                {'X',' ',' ',' ',' ',' ',' ','o',' ',' ',' ',' ',' ',' ','X'}};
 
 //                {' ',' ',' ','X','X',' ',' ',' '},
 //                {' ',' ',' ','X','X',' ',' ',' '},
@@ -35,8 +34,6 @@ public class Player extends GameObject {
 //                {'X','X','X','X','X','X','X','X'},
 //                {'X','X','X','X','X','X','X','X'},
 //                {' ','X','X',' ',' ','X','X',' '},
-        };
-
     }
 
     public void tick(){
@@ -44,7 +41,6 @@ public class Player extends GameObject {
 
         playerMovement();
         playerShooting();
-
     }
 
     private void playerShooting() {

@@ -16,7 +16,7 @@ public class Projectile extends GameObject {
                 {' ', 'X', 'X', 'X', ' '},
                 {' ', 'X', 'X', 'X', ' '},
                 {' ', 'X', 'X', 'X', ' '},
-                {' ', 'X', 'X', 'X', ' '}};
+                {' ', ' ', 'X', ' ', ' '}};
 
     }
 

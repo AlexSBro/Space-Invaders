@@ -37,4 +37,8 @@ public class ColorBuilder {
     public static Color buildYellow(float alpha){
         return new Color(1f, 1f, 0f, alpha);
     }
+
+    public static Color buildSoftYellow(float alpha){
+        return new Color(1f, 1f, .5f, alpha);
+    }
 }
