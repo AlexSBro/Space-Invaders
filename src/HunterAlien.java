@@ -42,7 +42,7 @@ public class HunterAlien extends Alien {
         super.alienMovementAlgorithm();
 
         int playerCenter = gameObjectManager.getPlayer().x  + gameObjectManager.getPlayer().width/2 ;
-        int alienCenter = this.x;
+        int alienCenter = this.x + this.width/2;
 
         if (playerCenter > alienCenter)
             this.x += this.speed;

@@ -3,7 +3,7 @@ import java.awt.*;
 public class Player extends GameObject {
 
     public Player(int speed, int health,  GameObjectManager gameObjectManager){
-        super(Settings.BOARD_WIDTH/2 - 48/2, Settings.BOARD_HEIGHT - 70, 48,  48, speed, health, gameObjectManager);
+        super(Settings.BOARD_WIDTH/2 - 48/2, Settings.BOARD_HEIGHT - 70, 32,  30, speed, health, gameObjectManager);
 
 
         this.spriteDrawing = new char[][] {

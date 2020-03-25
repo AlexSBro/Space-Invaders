@@ -8,20 +8,19 @@ public class SpriteDrawer {
 
         graphics.setColor(color);
 
-        int tenth = size/10;
+        float eigth = size/8;
 
         for(int innerY = 0; innerY < coordinates.length; innerY++){
             for(int innerX = 0; innerX < coordinates[innerY].length; innerX++){
                 if(coordinates[innerY][innerX] == 'X'){
-                    graphics.fillRect(x + innerX*tenth, y + innerY*tenth, tenth, tenth);
+                    graphics.fillRect((int)(x + innerX*eigth), (int)(y + innerY*eigth), (int) eigth, (int) eigth);
                 }
                 else if(coordinates[innerY][innerX] == 'x'){
                     graphics.setColor(ColorBuilder.buildSoftOrange(.8f));
-                    graphics.fillRect(x + innerX*tenth, y + innerY*tenth, tenth, tenth);
+                    graphics.fillRect((int) (x + innerX*eigth), (int) (y + innerY*eigth), (int) eigth, (int) eigth);
                     graphics.setColor(color);
                 }
             }
         }
     }
-
 }
