@@ -93,4 +93,9 @@ public class Explosion extends GameObject {
     protected Color getColor() {
         return ColorBuilder.buildSoftRed(getHealthAlpha());
     }
+
+    @Override
+    protected Color getSecondaryColor() {
+        return ColorBuilder.buildSoftOrange(getHealthAlpha());
+    }
 }

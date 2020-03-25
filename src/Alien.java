@@ -52,5 +52,4 @@ public class Alien extends GameObject {
         }
     }
 
-
 }

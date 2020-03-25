@@ -32,7 +32,7 @@ public class Player extends GameObject {
 
     private void playerShooting() {
         if(gameObjectManager.isFireShot()) {
-            gameObjectManager.addToQue(new Projectile(this.x, this.y - 20, 10, gameObjectManager));
+            gameObjectManager.addToQue(new Projectile(this.x + this.width/2, this.y - 20, 10, gameObjectManager));
             gameObjectManager.fireShot(false);
         }
     }
