@@ -11,6 +11,10 @@ public class ColorBuilder {
     }
 
     public static Color buildGreen(float alpha){
+        return new Color(0f, 1f, 0.5f, alpha);
+    }
+
+    public static Color buildSoftGreen(float alpha){
         return new Color(0.5f, 1f, 0.5f, alpha);
     }
 

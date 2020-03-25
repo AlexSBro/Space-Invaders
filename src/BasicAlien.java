@@ -51,7 +51,7 @@ public class BasicAlien extends Alien {
 
     @Override
     protected Color getColor() {
-        return ColorBuilder.buildGreen(getHealthAlpha());
+        return ColorBuilder.buildSoftGreen(getHealthAlpha());
     }
 
 }
