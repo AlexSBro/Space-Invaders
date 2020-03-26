@@ -44,14 +44,14 @@ public class HunterAlien extends Alien {
         int playerCenter = gameObjectManager.getPlayer().x  + gameObjectManager.getPlayer().width/2 ;
         int alienCenter = this.x + this.width/2;
 
-        if (playerCenter > alienCenter)
-            this.x += this.speed;
-
-        if (playerCenter < alienCenter)
-            this.x -= this.speed;
-
         if (playerCenter <= alienCenter + this.speed && playerCenter >= alienCenter - this.speed)
             this.y += this.speed;
+
+        else if (playerCenter > alienCenter)
+            this.x += this.speed;
+
+        else if (playerCenter < alienCenter)
+            this.x -= this.speed;
 
         if (isOutOfBounds()){
             preventMovingOutOfBounds();
