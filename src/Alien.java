@@ -1,6 +1,7 @@
 public class Alien extends GameObject {
 
     protected int hitPoints;
+    protected int scoreValue;
 
     protected int initialX;
     protected int initialY;
@@ -8,14 +9,18 @@ public class Alien extends GameObject {
     protected boolean moveRight;
     protected boolean moveLeft;
 
+
+
     public Alien(int x, int y, int width, int height, int speed, int health, int hitPoints, GameObjectManager gameObjects) {
         super(x, y, width, height, speed, health, gameObjects);
         this.hitPoints = hitPoints;
+        scoreValue = hitPoints;
     }
 
     public Alien(int width, int height, int speed, int health, int hitPoints, GameObjectManager gameObjects) {
         super(width, height, speed, health, gameObjects);
         this.hitPoints = hitPoints;
+        scoreValue = hitPoints;
     }
 
     public void tick() {
@@ -45,8 +50,10 @@ public class Alien extends GameObject {
         for(GameObject gameObject: gameObjectManager.getGameObjects()){
             if (gameObject instanceof Projectile && gameObjectManager.isIntersecting(this, gameObject)) {
                 this.health--;
-                if (health == 0)
+                if (health == 0){
                     removeSelf();
+                    gameObjectManager.addScore(scoreValue);
+                }
                 gameObject.removeSelf();
             }
         }

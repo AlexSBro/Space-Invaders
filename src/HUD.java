@@ -2,20 +2,23 @@ import java.awt.*;
 
 public class HUD {
 
-    public static void draw(Graphics graphics, int health, int level){
+    public static void draw(Graphics graphics, int health, int level, int score){
         drawHealthBar(graphics, health);
         drawLevel(graphics, level);
+        drawScoreCounter(graphics, score);
         if(health <= 0){
             drawGameOver(graphics);
         }
     }
 
     private static void drawLevel(Graphics graphics, int level){
+        String levelString = "LEVEL : " + String.valueOf(level);
+
         graphics.setColor(Color.white);
-        Font font = new Font("Monotype Corsiva", Font.PLAIN, 20);
+        Font font = new Font("Monotype Corsiva", Font.PLAIN, 24);
 
         graphics.setFont(font);
-        graphics.drawString(String.valueOf(level),30, 30);
+        graphics.drawString(levelString,Settings.BOARD_WIDTH - 152, 32);
     }
 
     private static void drawGameOver(Graphics graphics){
@@ -33,6 +36,16 @@ public class HUD {
         //damage taken
         graphics.setColor(Color.red);
         graphics.fillRect(Settings.BOARD_WIDTH - 110 + health,Settings.BOARD_HEIGHT - 40, 100 - health, 10);
+    }
+
+    private static void drawScoreCounter(Graphics graphics, int score){
+        String scoreString = "SCORE : " + String.valueOf(score);
+
+        graphics.setColor(Color.white);
+        Font font = new Font("Monotype Corsiva", Font.PLAIN, 24);
+
+        graphics.setFont(font);
+        graphics.drawString(scoreString, 30, 30);
     }
 
 }

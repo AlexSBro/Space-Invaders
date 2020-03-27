@@ -17,7 +17,7 @@ public class GameObjectManager {
     private Player player;
 
     public GameObjectManager() {
-         waveManager = new WaveManager(this);
+        waveManager = new WaveManager(this);
 
         player = new Player(8, 100,this);
         gameObjects.add(player);
@@ -104,6 +104,10 @@ public class GameObjectManager {
     }
     public boolean isLeftKeyPressed() {
         return leftKeyPressed;
+    }
+
+    public void addScore(int score){
+        this.player.addScore(score);
     }
 
 }

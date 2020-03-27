@@ -1,6 +1,4 @@
 import java.awt.*;
-import java.awt.AlphaComposite;
-import java.awt.image.BufferedImage;
 
 public class SpriteDrawer {
 

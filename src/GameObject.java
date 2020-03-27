@@ -55,7 +55,7 @@ public class GameObject {
     public void removeSelf(){
         gameObjectManager.addToRemovalQue(this);
         if(this instanceof Alien){
-            gameObjectManager.addToQue(new Explosion(x, y, width, height, speed, gameObjectManager));
+            gameObjectManager.addToQue(new Explosion(x, y, width, height, speed, ((Alien) this).hitPoints, gameObjectManager));
         }
     }
 

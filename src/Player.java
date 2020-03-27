@@ -2,8 +2,12 @@ import java.awt.*;
 
 public class Player extends GameObject {
 
+    protected int score = 0;
+
     public Player(int speed, int health,  GameObjectManager gameObjectManager){
         super(Settings.BOARD_WIDTH/2 - 30/2, Settings.BOARD_HEIGHT - 70, 30,  32, speed, health, gameObjectManager);
+
+        this.score = 0;
 
         this.spriteDrawing = new char[][] {
 
@@ -59,6 +63,10 @@ public class Player extends GameObject {
         }
 
         preventMovingOutOfBounds();
+    }
+
+    public void addScore(int score){
+        this.score += score;
     }
 
     @Override
