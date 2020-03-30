@@ -75,10 +75,6 @@ public class GameObject {
     public void paint(Graphics graphics){
 
         SpriteDrawer.drawSprite(graphics, getColor(), getSecondaryColor(), spriteDrawing, this.width, this.height, this.x, this.y);
-        if(Settings.DEBUG) {
-            graphics.setColor(Color.red);
-            graphics.drawRect(x, y, width, height);
-        }
 
     }
 

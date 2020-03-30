@@ -28,16 +28,6 @@ public class Player extends GameObject {
                 {'X','X',' ',' ','o','o',' ','o',' ','o','o',' ',' ','X','X'},
                 {'X',' ',' ',' ',' ',' ',' ','o',' ',' ',' ',' ',' ',' ','X'}};
 
-//                {' ',' ',' ','X','X',' ',' ',' '},
-//                {' ',' ',' ','X','X',' ',' ',' '},
-//                {' ',' ',' ','X','X',' ',' ',' '},
-//                {' ',' ',' ','X','X',' ',' ',' '},
-//                {' ',' ',' ','X','X',' ',' ',' '},
-//                {' ',' ',' ','X','X',' ',' ',' '},
-//                {' ','X','X','X','X','X','X',' '},
-//                {'X','X','X','X','X','X','X','X'},
-//                {'X','X','X','X','X','X','X','X'},
-//                {' ','X','X',' ',' ','X','X',' '},
     }
 
     public void tick(){
@@ -63,6 +53,11 @@ public class Player extends GameObject {
         }
 
         preventMovingOutOfBounds();
+    }
+
+    @Override
+    public void removeSelf() {
+        super.removeSelf();
     }
 
     public void addScore(int score){

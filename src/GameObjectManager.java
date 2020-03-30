@@ -42,6 +42,13 @@ public class GameObjectManager {
 
     }
 
+    public void start(){
+        waveManager = new WaveManager(this);
+        player = new Player(8, 100,this);
+        gameObjects = new ArrayList<GameObject>();
+        gameObjects.add(player);
+    }
+
     public boolean isIntersecting(GameObject gameObjectA, GameObject gameObjectB){
 
         int topA = gameObjectA.y;
@@ -82,7 +89,12 @@ public class GameObjectManager {
     }
 
     public void fireShot(boolean fireShot){
-        this.fireShot = fireShot;
+
+        if(player.health != 0){
+            this.fireShot = fireShot;
+        }else {
+            start();
+        }
     }
 
     public void rightKeyPressed(){
