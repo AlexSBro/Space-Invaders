@@ -11,10 +11,23 @@ public class WaveManager {
     public WaveManager(GameObjectManager gameObjectManager){
         this.gameObjectManager = gameObjectManager;
 
+        waves.add(generateStartString());
         waves.add(generateStreakerAlien(1, 10, 25));
         waves.add(generateBasicAliens(8, 3, 10));
         waves.add(generateHunterAlien(2, 50, 150));
 
+    }
+
+    private ArrayList<GameObject> generateStartString(){
+        ArrayList<GameObject> wave = new ArrayList<>();
+
+        wave.add(new Letter(200,200,0,0,0,1,1,gameObjectManager,'S'));
+        wave.add(new Letter(250,200,0,0,0,1,1,gameObjectManager,'T'));
+        wave.add(new Letter(300,200,0,0,0,1,1,gameObjectManager,'A'));
+        wave.add(new Letter(350,200,0,0,0,1,1,gameObjectManager,'R'));
+        wave.add(new Letter(400,200,0,0,0,1,1,gameObjectManager,'T'));
+
+        return wave;
     }
 
     private ArrayList<GameObject> generateBasicAliens(int speed, int health, int hitPoints){
