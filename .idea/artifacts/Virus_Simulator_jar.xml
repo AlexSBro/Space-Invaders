@@ -2,7 +2,7 @@
   <artifact type="jar" name="Virus Simulator:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/Virus_Simulator_jar</output-path>
     <root id="archive" name="Virus Simulator.jar">
-      <element id="module-output" name="Virus Simulator" />
+      <element id="module-output" name="Space Invaders" />
     </root>
   </artifact>
 </component>

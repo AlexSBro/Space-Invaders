@@ -95,6 +95,7 @@ public class GameObjectManager {
         }else {
             start();
         }
+
     }
 
     public void rightKeyPressed(){
