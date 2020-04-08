@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class GameObjectManager {
 
@@ -9,7 +10,7 @@ public class GameObjectManager {
 
     private WaveManager waveManager;
 
-    private ArrayList<GameObject> gameObjects = new ArrayList<>();
+    private CopyOnWriteArrayList<GameObject> gameObjects = new CopyOnWriteArrayList<>();
 
     private ArrayList<GameObject> addedObjects = new ArrayList<>();
     private ArrayList<GameObject> deletedObjects = new ArrayList<>();
@@ -45,7 +46,7 @@ public class GameObjectManager {
     public void start(){
         waveManager = new WaveManager(this);
         player = new Player(8, 100,this);
-        gameObjects = new ArrayList<GameObject>();
+        gameObjects = new CopyOnWriteArrayList<>();
         gameObjects.add(player);
     }
 
@@ -80,7 +81,7 @@ public class GameObjectManager {
         return player;
     }
 
-    public ArrayList<GameObject> getGameObjects() {
+    public CopyOnWriteArrayList<GameObject> getGameObjects() {
         return gameObjects;
     }
 
