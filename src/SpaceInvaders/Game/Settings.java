@@ -1,3 +1,5 @@
+package SpaceInvaders.Game;
+
 public class Settings {
 
     public static boolean DEBUG = false;
@@ -5,6 +7,6 @@ public class Settings {
     public  static int BOARD_WIDTH = 640;
     public  static int BOARD_HEIGHT = 640;
 
-    public static final String highScoreFile = "highscore.txt";
+    public static final String HIGH_SCORE_FILE = "highscore.txt";
 
 }

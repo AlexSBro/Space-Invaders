@@ -1,16 +1,12 @@
+package SpaceInvaders.PersistentStore;
+
+import SpaceInvaders.Game.Settings;
+
 import java.io.*;
 
-public class PersistantStore {
+public class PersistentStore {
 
-    public static File highScoreFile = new File(Settings.highScoreFile);
-
-
-
-
-
-
-
-
+    public static File highScoreFile = new File(Settings.HIGH_SCORE_FILE);
 
     private static void createFile(String fileName){
         highScoreFile = new File(fileName);
@@ -30,17 +26,19 @@ public class PersistantStore {
 
     public static String readHighScore(int currentScore)  {
         if (!checkFileExists())
-            createFile(Settings.highScoreFile);
+            createFile(Settings.HIGH_SCORE_FILE);
 
 
-        FileReader readFile = null;
+        FileReader readFile;
         BufferedReader reader = null;
         try {
-            readFile = new FileReader(Settings.highScoreFile);
+            readFile = new FileReader(Settings.HIGH_SCORE_FILE);
             reader = new BufferedReader(readFile);
-            if (currentScore > Integer.parseInt(reader.readLine()) || reader.readLine() == null)
+            String score = reader.readLine();
+            if (currentScore > Integer.parseInt(score) || score == null)
                 writeHighScore(currentScore);
-            return reader.readLine();
+            System.out.println(score);
+            return score;
         }
         catch (Exception e){
             return "-1";
@@ -57,20 +55,20 @@ public class PersistantStore {
     }
 
     private static void writeHighScore(int score){
-        FileWriter fileWriter = null;
-        BufferedWriter writer = null;
+        FileWriter fileWriter;
+        BufferedWriter bufferedWriter = null;
         try {
-            fileWriter = new FileWriter(Settings.highScoreFile);
-            writer = new BufferedWriter(fileWriter);
-            writer.write(String.valueOf(score));
+            fileWriter = new FileWriter(Settings.HIGH_SCORE_FILE);
+            bufferedWriter = new BufferedWriter(fileWriter);
+            bufferedWriter.write(String.valueOf(score));
         }
         catch (Exception e){
+            System.out.println("file error");
             e.printStackTrace();
-        }
-        finally {
+        } finally {
             try{
-                if (writer != null)
-                    writer.close();
+                if (bufferedWriter != null)
+                    bufferedWriter.close();
             }
             catch (IOException e) {
                 e.printStackTrace();

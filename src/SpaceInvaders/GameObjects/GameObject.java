@@ -1,3 +1,10 @@
+package SpaceInvaders.GameObjects;
+
+import SpaceInvaders.Game.GameObjectManager;
+import SpaceInvaders.Game.Settings;
+import SpaceInvaders.Utilities.ColorBuilder;
+import SpaceInvaders.Utilities.SpriteDrawer;
+
 import java.awt.*;
 
 public class GameObject {
@@ -55,7 +62,7 @@ public class GameObject {
     public void removeSelf(){
         gameObjectManager.addToRemovalQue(this);
         if(this instanceof Alien){
-            gameObjectManager.addToQue(new Explosion(x, y, width, height, speed, ((Alien) this).hitPoints, gameObjectManager));
+            gameObjectManager.addToQue(new Explosion(x, y, width, height, speed, ((Alien) this).getHitPoints(), gameObjectManager));
         }
     }
 
@@ -93,6 +100,26 @@ public class GameObject {
 
         return ColorBuilder.buildGreen(getHealthAlpha());
 
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public int getHealth() {
+        return health;
     }
 
 }

@@ -1,3 +1,8 @@
+package SpaceInvaders.Game;
+
+import SpaceInvaders.GameObjects.GameObject;
+import SpaceInvaders.GameObjects.Player;
+
 import java.util.ArrayList;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -52,15 +57,15 @@ public class GameObjectManager {
 
     public boolean isIntersecting(GameObject gameObjectA, GameObject gameObjectB){
 
-        int topA = gameObjectA.y;
-        int bottomA = gameObjectA.y + gameObjectA.height;
-        int leftA = gameObjectA.x;
-        int rightA = gameObjectA.x + gameObjectA.width;
+        int topA = gameObjectA.getY();
+        int bottomA = gameObjectA.getY() + gameObjectA.getHeight();
+        int leftA = gameObjectA.getX();
+        int rightA = gameObjectA.getX() + gameObjectA.getWidth();
 
-        int topB = gameObjectB.y;
-        int bottomB = gameObjectB.y + gameObjectB.height;
-        int leftB = gameObjectB.x;
-        int rightB = gameObjectB.x + gameObjectB.width;
+        int topB = gameObjectB.getY();
+        int bottomB = gameObjectB.getY() + gameObjectB.getHeight();
+        int leftB = gameObjectB.getX();
+        int rightB = gameObjectB.getX() + gameObjectB.getWidth();
 
         return ((topA <= bottomB && bottomA >= bottomB) || (bottomA >= topB && bottomA <= bottomB)) && ((rightA >= leftB && leftA <= leftB) || (leftA <= rightB && leftA >= leftB));
     }
@@ -91,7 +96,7 @@ public class GameObjectManager {
 
     public void fireShot(boolean fireShot){
 
-        if(player.health != 0){
+        if(player.getHealth() != 0){
             this.fireShot = fireShot;
         }else {
             start();

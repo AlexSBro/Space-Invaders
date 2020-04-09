@@ -1,10 +1,14 @@
+package SpaceInvaders.GameObjects;
+
+import SpaceInvaders.Utilities.ColorBuilder;
+import SpaceInvaders.Game.GameObjectManager;
+import SpaceInvaders.Game.Settings;
+
 import java.awt.*;
 
 public class Player extends GameObject {
 
     protected int score = 0;
-
-    protected int highScore = 0;
 
     public Player(int speed, int health,  GameObjectManager gameObjectManager){
         super(Settings.BOARD_WIDTH/2 - 30/2, Settings.BOARD_HEIGHT - 70, 30,  32, speed, health, gameObjectManager);
@@ -76,4 +80,7 @@ public class Player extends GameObject {
         return ColorBuilder.buildSoftOrange(getHealthAlpha());
     }
 
+    public int getScore() {
+        return score;
+    }
 }

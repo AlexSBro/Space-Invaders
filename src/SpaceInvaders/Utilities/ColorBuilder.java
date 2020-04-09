@@ -1,3 +1,5 @@
+package SpaceInvaders.Utilities;
+
 import java.awt.*;
 
 public class ColorBuilder {

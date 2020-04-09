@@ -1,5 +1,8 @@
+package SpaceInvaders.GameObjects;
+
+import SpaceInvaders.Game.GameObjectManager;
+
 import java.awt.*;
-import java.util.ArrayList;
 
 public class Projectile extends GameObject {
 

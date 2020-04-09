@@ -1,3 +1,8 @@
+package SpaceInvaders.GameObjects;
+
+import SpaceInvaders.Game.GameObjectManager;
+import SpaceInvaders.Game.Settings;
+
 import java.awt.*;
 
 public class Letter extends Alien {

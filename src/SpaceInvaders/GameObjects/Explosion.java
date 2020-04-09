@@ -1,3 +1,8 @@
+package SpaceInvaders.GameObjects;
+
+import SpaceInvaders.Game.GameObjectManager;
+import SpaceInvaders.Utilities.ColorBuilder;
+
 import java.awt.*;
 
 public class Explosion extends GameObject {

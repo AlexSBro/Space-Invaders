@@ -1,3 +1,8 @@
+package SpaceInvaders.GameObjects;
+
+import SpaceInvaders.Game.GameObjectManager;
+import SpaceInvaders.Game.Settings;
+
 public class Alien extends GameObject {
 
     protected int hitPoints;
@@ -61,4 +66,7 @@ public class Alien extends GameObject {
         }
     }
 
+    public int getHitPoints() {
+        return hitPoints;
+    }
 }

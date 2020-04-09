@@ -1,3 +1,7 @@
+package SpaceInvaders.Game;
+
+import SpaceInvaders.PersistentStore.PersistentStore;
+
 import java.awt.*;
 
 public class HUD {
@@ -31,7 +35,7 @@ public class HUD {
     }
 
     private static void drawHighScore(Graphics graphics, int score){
-        String highScoreString = "HIGHSCORE: " + String.valueOf(PersistantStore.readHighScore(score));
+        String highScoreString = "HIGHSCORE: " + String.valueOf(PersistentStore.readHighScore(score));
 
         graphics.setColor(Color.white);
         Font font = new Font("Monotype Corsiva", Font.PLAIN, 50);

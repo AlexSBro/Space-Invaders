@@ -1,3 +1,9 @@
+package SpaceInvaders.GameObjects;
+
+import SpaceInvaders.Utilities.ColorBuilder;
+import SpaceInvaders.Game.GameObjectManager;
+import SpaceInvaders.Game.Settings;
+
 import java.awt.*;
 
 public class HunterAlien extends Alien {
@@ -32,7 +38,7 @@ public class HunterAlien extends Alien {
     public void alienMovementAlgorithm(){
         super.alienMovementAlgorithm();
 
-        int playerCenter = gameObjectManager.getPlayer().x  + gameObjectManager.getPlayer().width/2 ;
+        int playerCenter = gameObjectManager.getPlayer().getX()  + gameObjectManager.getPlayer().getWidth()/2 ;
         int alienCenter = this.x + this.width/2;
 
         if (playerCenter <= alienCenter + this.speed && playerCenter >= alienCenter - this.speed)

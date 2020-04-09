@@ -1,3 +1,9 @@
+package SpaceInvaders.GameObjects;
+
+import SpaceInvaders.Utilities.ColorBuilder;
+import SpaceInvaders.Game.GameObjectManager;
+import SpaceInvaders.Game.Settings;
+
 import java.awt.*;
 import java.util.Random;
 

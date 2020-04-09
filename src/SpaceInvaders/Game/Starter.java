@@ -1,3 +1,5 @@
+package SpaceInvaders.Game;
+
 import javax.swing.*;
 
 public class Starter extends JFrame {
