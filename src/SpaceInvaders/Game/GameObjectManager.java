@@ -2,6 +2,7 @@ package SpaceInvaders.Game;
 
 import SpaceInvaders.GameObjects.GameObject;
 import SpaceInvaders.GameObjects.Player;
+import SpaceInvaders.PersistentStore.PersistentStore;
 
 import java.util.ArrayList;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -127,6 +128,7 @@ public class GameObjectManager {
 
     public void addScore(int score){
         this.player.addScore(score);
+        PersistentStore.readHighScore(score);
     }
 
 }

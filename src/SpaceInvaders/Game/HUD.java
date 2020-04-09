@@ -35,13 +35,14 @@ public class HUD {
     }
 
     private static void drawHighScore(Graphics graphics, int score){
-        String highScoreString = "HIGHSCORE: " + String.valueOf(PersistentStore.readHighScore(score));
+        //String highScoreValue = String.valueOf(PersistentStore.readHighScore(score));
+        String highScoreString = "HIGHSCORE: " + PersistentStore.highScoreValue;
 
         graphics.setColor(Color.white);
         Font font = new Font("Monotype Corsiva", Font.PLAIN, 50);
 
         graphics.setFont(font);
-        graphics.drawString(highScoreString,180, Settings.BOARD_HEIGHT/2 + 25);
+        graphics.drawString(highScoreString,150, Settings.BOARD_HEIGHT/2 + 25);
     }
 
     private static void drawHealthBar(Graphics graphics, int health) {

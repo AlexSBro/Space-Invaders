@@ -7,6 +7,7 @@ import java.io.*;
 public class PersistentStore {
 
     public static File highScoreFile = new File(Settings.HIGH_SCORE_FILE);
+    public static String highScoreValue;
 
     private static void createFile(String fileName){
         highScoreFile = new File(fileName);
@@ -24,7 +25,7 @@ public class PersistentStore {
         return highScoreFile.exists();
     }
 
-    public static String readHighScore(int currentScore)  {
+    public static void readHighScore(int currentScore)  {
         if (!checkFileExists())
             createFile(Settings.HIGH_SCORE_FILE);
 
@@ -35,13 +36,12 @@ public class PersistentStore {
             readFile = new FileReader(Settings.HIGH_SCORE_FILE);
             reader = new BufferedReader(readFile);
             String score = reader.readLine();
-            if (currentScore > Integer.parseInt(score) || score == null)
+            if (score == null || currentScore > Integer.parseInt(score) )
                 writeHighScore(currentScore);
-            System.out.println(score);
-            return score;
+            highScoreValue = score;
         }
         catch (Exception e){
-            return "-1";
+            e.printStackTrace();
         }
         finally {
             try{
