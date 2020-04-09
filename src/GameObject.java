@@ -46,7 +46,7 @@ public class GameObject {
     public void hit(int hitPoints){
         if(health - hitPoints <= 0){
             removeSelf();
-            health = 0;
+            health = 0; 
         }
         else
             health -= hitPoints;

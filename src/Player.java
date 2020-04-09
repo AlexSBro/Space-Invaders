@@ -4,6 +4,8 @@ public class Player extends GameObject {
 
     protected int score = 0;
 
+    protected int highScore = 0;
+
     public Player(int speed, int health,  GameObjectManager gameObjectManager){
         super(Settings.BOARD_WIDTH/2 - 30/2, Settings.BOARD_HEIGHT - 70, 30,  32, speed, health, gameObjectManager);
 

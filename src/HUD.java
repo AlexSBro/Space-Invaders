@@ -8,6 +8,7 @@ public class HUD {
         drawScoreCounter(graphics, score);
         if(health <= 0){
             drawGameOver(graphics);
+            drawHighScore(graphics, score);
         }
     }
 
@@ -27,6 +28,16 @@ public class HUD {
 
         graphics.setFont(font);
         graphics.drawString("GAME OVER",180, Settings.BOARD_HEIGHT/2 - 25);
+    }
+
+    private static void drawHighScore(Graphics graphics, int score){
+        String highScoreString = "HIGHSCORE: " + String.valueOf(PersistantStore.readHighScore(score));
+
+        graphics.setColor(Color.white);
+        Font font = new Font("Monotype Corsiva", Font.PLAIN, 50);
+
+        graphics.setFont(font);
+        graphics.drawString(highScoreString,180, Settings.BOARD_HEIGHT/2 + 25);
     }
 
     private static void drawHealthBar(Graphics graphics, int health) {
