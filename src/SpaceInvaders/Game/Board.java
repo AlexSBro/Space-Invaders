@@ -36,16 +36,7 @@ public class Board  extends JPanel implements Runnable {
     }
 
     public void tick(){
-        boolean hasAlien = false;
-        for (GameObject object: gameObjectManager.getGameObjects()) {
-            object.tick();
-            if(object instanceof Alien){
-                hasAlien = true;
-            }
-        }
-        if(!hasAlien){
-            gameObjectManager.getNextWave();
-        }
+        gameObjectManager.tick();
     }
 
     public synchronized void run() {

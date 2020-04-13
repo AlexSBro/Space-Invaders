@@ -73,7 +73,7 @@ public class Alien extends GameObject {
     @Override
     public void removeSelf() {
         super.removeSelf();
-        alienWave.remove(this);
+        alienWave.removeAlien(this);
     }
 
     public int getHitPoints() {

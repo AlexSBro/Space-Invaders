@@ -7,10 +7,19 @@ import java.util.ArrayList;
 
 public class AlienWave {
 
+    private boolean canExit = true;
+
     private ArrayList<GameObject> aliens = new ArrayList<>();
+    private WaveManager waveManager;
 
-    private void tick(){
+    public AlienWave(WaveManager waveManager) {
+        this.waveManager = waveManager;
+    }
 
+    public void tick(){
+        if(aliens.size() == 0 && canExit){
+            waveManager.nextWave();
+        }
     }
 
     public void addGameObject(GameObject gameObject){
@@ -21,7 +30,7 @@ public class AlienWave {
         return aliens;
     }
 
-    public void remove(Alien killedAlien){
+    public void removeAlien(Alien killedAlien){
         aliens.remove(killedAlien);
     }
 

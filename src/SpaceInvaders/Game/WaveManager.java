@@ -3,27 +3,29 @@ package SpaceInvaders.Game;
 import SpaceInvaders.GameObjects.*;
 
 import java.util.ArrayList;
+import java.util.Stack;
 
 public class WaveManager {
 
     private int waveNumber = -1;
 
     protected GameObjectManager gameObjectManager;
+    private AlienWave currentWave;
 
-    private ArrayList<AlienWave> alienWaves = new ArrayList<>();
+    private Stack<AlienWave> alienWaves = new Stack<>();
 
     public WaveManager(GameObjectManager gameObjectManager){
         this.gameObjectManager = gameObjectManager;
 
-        alienWaves.add(generateStartString());
-        alienWaves.add(generateHunterAlien(2, 50, 150));
-        alienWaves.add(generateStreakerAlien(1, 10, 25));
-        alienWaves.add(generateBasicAliens(8, 3, 10));
+        alienWaves.push(generateHunterAlien(2, 50, 150));
+        alienWaves.push(generateStreakerAlien(1, 10, 25));
+        alienWaves.push(generateBasicAliens(8, 3, 10));
+        alienWaves.push(generateStartString());
 
     }
 
     private AlienWave generateStartString(){
-        AlienWave alienWave = new AlienWave();
+        AlienWave alienWave = new AlienWave(this);
 
         alienWave.addGameObject(new Letter(200,200,0,0,0,1,1,gameObjectManager, alienWave,'S'));
         alienWave.addGameObject(new Letter(250,200,0,0,0,1,1,gameObjectManager, alienWave,'T'));
@@ -35,7 +37,7 @@ public class WaveManager {
     }
 
     private AlienWave generateBasicAliens(int speed, int health, int hitPoints){
-        AlienWave alienWave = new AlienWave();
+        AlienWave alienWave = new AlienWave(this);
 
         int ax = 8;
         int ay = 8;
@@ -54,7 +56,7 @@ public class WaveManager {
     }
 
     private AlienWave generateStreakerAlien(int speed, int health, int hitPoints){
-        AlienWave alienWave = new AlienWave();
+        AlienWave alienWave = new AlienWave(this);
 
         alienWave.addGameObject(new StreakerAlien(speed, health, hitPoints, gameObjectManager, alienWave));
 
@@ -62,19 +64,29 @@ public class WaveManager {
     }
 
     private AlienWave generateHunterAlien(int speed, int health, int hitPoints){
-        AlienWave alienWave = new AlienWave();
+        AlienWave alienWave = new AlienWave(this);
 
         alienWave.addGameObject(new HunterAlien(speed, health, hitPoints, gameObjectManager, alienWave));
 
         return alienWave;
     }
 
-    public AlienWave getNextWave(){
-        if (waveNumber+1 < alienWaves.size()) {
-            waveNumber++;
-            return alienWaves.get(waveNumber);
-        }else{
-            return null;
+    public void start(){
+        this.currentWave = alienWaves.peek();
+        gameObjectManager.setNextWave(alienWaves.peek());
+    }
+
+    public void tick(){
+        if(currentWave != null) {
+            currentWave.tick();
+        }
+    }
+
+    public void nextWave(){
+        alienWaves.pop();
+        if(!alienWaves.empty()) {
+            currentWave = alienWaves.peek();
+            gameObjectManager.setNextWave(currentWave);
         }
     }
 

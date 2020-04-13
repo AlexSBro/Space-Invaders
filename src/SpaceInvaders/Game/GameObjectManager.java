@@ -1,5 +1,6 @@
 package SpaceInvaders.Game;
 
+import SpaceInvaders.GameObjects.Alien;
 import SpaceInvaders.GameObjects.GameObject;
 import SpaceInvaders.GameObjects.Player;
 import SpaceInvaders.PersistentStore.PersistentStore;
@@ -28,6 +29,7 @@ public class GameObjectManager {
 
         player = new Player(8, 100,this);
         gameObjects.add(player);
+        waveManager.start();
     }
 
 
@@ -41,11 +43,9 @@ public class GameObjectManager {
 
     }
 
-    public void getNextWave(){
-        AlienWave nextAlienWave = waveManager.getNextWave();
-        if (nextAlienWave != null) {
-            gameObjects.addAll(nextAlienWave.getAliens());
-        }
+    public void setNextWave(AlienWave nextWave){
+
+            gameObjects.addAll(nextWave.getAliens());
 
     }
 
@@ -54,6 +54,15 @@ public class GameObjectManager {
         player = new Player(8, 100,this);
         gameObjects = new CopyOnWriteArrayList<>();
         gameObjects.add(player);
+    }
+
+    public void tick(){
+        waveManager.tick();
+
+        for (GameObject object: gameObjects) {
+            object.tick();
+        }
+
     }
 
     public boolean isIntersecting(GameObject gameObjectA, GameObject gameObjectB){
