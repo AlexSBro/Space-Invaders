@@ -1,5 +1,7 @@
-package SpaceInvaders.Game;
+package SpaceInvaders.Game.Waves;
 
+import SpaceInvaders.Game.GameObjectManager;
+import SpaceInvaders.Game.Waves.WaveManager;
 import SpaceInvaders.GameObjects.Alien;
 import SpaceInvaders.GameObjects.GameObject;
 
@@ -9,10 +11,12 @@ public class AlienWave {
 
     private boolean canExit = true;
 
-    private ArrayList<GameObject> aliens = new ArrayList<>();
-    private WaveManager waveManager;
+    protected ArrayList<GameObject> aliens = new ArrayList<>();
+    protected WaveManager waveManager;
+    protected GameObjectManager gameObjectManager;
 
-    public AlienWave(WaveManager waveManager) {
+    public AlienWave(GameObjectManager gameObjectManager, WaveManager waveManager) {
+        this.gameObjectManager = gameObjectManager;
         this.waveManager = waveManager;
     }
 

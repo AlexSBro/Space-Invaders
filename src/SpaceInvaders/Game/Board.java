@@ -1,6 +1,5 @@
 package SpaceInvaders.Game;
 
-import SpaceInvaders.GameObjects.Alien;
 import SpaceInvaders.GameObjects.GameObject;
 
 import java.awt.Color;
@@ -119,7 +118,7 @@ public class Board  extends JPanel implements Runnable {
         graphics.setColor(Color.black);
         graphics.fillRect(0, 0, Settings.BOARD_WIDTH, Settings.BOARD_HEIGHT);
 
-        HUD.draw(graphics, gameObjectManager.getPlayer().getHealth(), gameObjectManager.getWaveNumber() + 1, gameObjectManager.getPlayer().getScore());
+        HUD.draw(graphics, gameObjectManager.getPlayer().getHealth(), gameObjectManager.getWaveNumber(), gameObjectManager.getPlayer().getScore());
 
         for (GameObject object: gameObjectManager.getGameObjects()){
             object.paint(graphics);

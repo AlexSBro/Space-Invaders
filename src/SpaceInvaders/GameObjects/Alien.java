@@ -2,7 +2,7 @@ package SpaceInvaders.GameObjects;
 
 import SpaceInvaders.Game.GameObjectManager;
 import SpaceInvaders.Game.Settings;
-import SpaceInvaders.Game.AlienWave;
+import SpaceInvaders.Game.Waves.AlienWave;
 
 public class Alien extends GameObject {
 

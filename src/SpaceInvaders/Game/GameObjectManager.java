@@ -1,6 +1,7 @@
 package SpaceInvaders.Game;
 
-import SpaceInvaders.GameObjects.Alien;
+import SpaceInvaders.Game.Waves.AlienWave;
+import SpaceInvaders.Game.Waves.WaveManager;
 import SpaceInvaders.GameObjects.GameObject;
 import SpaceInvaders.GameObjects.Player;
 import SpaceInvaders.PersistentStore.PersistentStore;

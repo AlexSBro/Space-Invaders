@@ -1,6 +1,6 @@
 package SpaceInvaders.GameObjects;
 
-import SpaceInvaders.Game.AlienWave;
+import SpaceInvaders.Game.Waves.AlienWave;
 import SpaceInvaders.Utilities.ColorBuilder;
 import SpaceInvaders.Game.GameObjectManager;
 import SpaceInvaders.Game.Settings;
