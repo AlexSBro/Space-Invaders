@@ -50,20 +50,38 @@ public class Board  extends JPanel implements Runnable {
 
     public synchronized void run() {
 
-        while (true) {
+        long initialTime = System.nanoTime();
+        final double timeF = 1000000000 / Settings.FPS;
+        double  deltaF = 0;
+        int frames = 0, ticks = 0;
+        long timer = System.currentTimeMillis();
 
-            synchronized (this) {
+        while (running) {
+
+            long currentTime = System.nanoTime();
+            deltaF += (currentTime - initialTime) / timeF;
+            initialTime = currentTime;
+
+            if (deltaF >= 1) {
                 gameObjectManager.updateObjects();
-                tick();
                 repaint();
+                tick();
+
+                ticks ++;
+                frames++;
+                deltaF--;
             }
 
-            try {
-                Thread.sleep(20 );
-            }catch (InterruptedException e) {
-                System.out.println(e);
+            if (System.currentTimeMillis() - timer > 1000) {
+                if (Settings.RENDER_TIME) {
+                    System.out.println(String.format("UPS: %s, FPS: %s", ticks, frames));
+                }
+                frames = 0;
+                ticks = 0;
+                timer += 1000;
             }
         }
+
 
     }
 
@@ -86,7 +104,7 @@ public class Board  extends JPanel implements Runnable {
         public void keyPressed(KeyEvent e) {
 
             int key = e.getKeyCode();
-            if(key==39){
+            if(key == 39){
                 gameObjectManager.rightKeyPressed();
             }
             if (key == 37){

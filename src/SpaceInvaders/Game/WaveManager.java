@@ -10,69 +10,69 @@ public class WaveManager {
 
     protected GameObjectManager gameObjectManager;
 
-    private ArrayList<ArrayList<GameObject>> waves = new ArrayList<>();
+    private ArrayList<AlienWave> alienWaves = new ArrayList<>();
 
     public WaveManager(GameObjectManager gameObjectManager){
         this.gameObjectManager = gameObjectManager;
 
-        waves.add(generateStartString());
-        waves.add(generateHunterAlien(2, 50, 150));
-        waves.add(generateStreakerAlien(1, 10, 25));
-        waves.add(generateBasicAliens(8, 3, 10));
+        alienWaves.add(generateStartString());
+        alienWaves.add(generateHunterAlien(2, 50, 150));
+        alienWaves.add(generateStreakerAlien(1, 10, 25));
+        alienWaves.add(generateBasicAliens(8, 3, 10));
 
     }
 
-    private ArrayList<GameObject> generateStartString(){
-        ArrayList<GameObject> wave = new ArrayList<>();
+    private AlienWave generateStartString(){
+        AlienWave alienWave = new AlienWave();
 
-        wave.add(new Letter(200,200,0,0,0,1,1,gameObjectManager,'S'));
-        wave.add(new Letter(250,200,0,0,0,1,1,gameObjectManager,'T'));
-        wave.add(new Letter(300,200,0,0,0,1,1,gameObjectManager,'A'));
-        wave.add(new Letter(350,200,0,0,0,1,1,gameObjectManager,'R'));
-        wave.add(new Letter(400,200,0,0,0,1,1,gameObjectManager,'T'));
+        alienWave.addGameObject(new Letter(200,200,0,0,0,1,1,gameObjectManager, alienWave,'S'));
+        alienWave.addGameObject(new Letter(250,200,0,0,0,1,1,gameObjectManager, alienWave,'T'));
+        alienWave.addGameObject(new Letter(300,200,0,0,0,1,1,gameObjectManager, alienWave,'A'));
+        alienWave.addGameObject(new Letter(350,200,0,0,0,1,1,gameObjectManager, alienWave,'R'));
+        alienWave.addGameObject(new Letter(400,200,0,0,0,1,1,gameObjectManager, alienWave,'T'));
 
-        return wave;
+        return alienWave;
     }
 
-    private ArrayList<GameObject> generateBasicAliens(int speed, int health, int hitPoints){
-        ArrayList<GameObject> wave = new ArrayList<>();
+    private AlienWave generateBasicAliens(int speed, int health, int hitPoints){
+        AlienWave alienWave = new AlienWave();
 
         int ax = 8;
         int ay = 8;
 
         for (int i = 0; i < 10; i++) {
-            BasicAlien basicAlien = new BasicAlien(ax, ay, speed, health, hitPoints, gameObjectManager);
+            BasicAlien basicAlien = new BasicAlien(ax, ay, speed, health, hitPoints, gameObjectManager, alienWave);
             ax += 40;
             if (i == 4) {
                 ax = 8;
                 ay += 40;
             }
-            wave.add(basicAlien);
+            alienWave.addGameObject(basicAlien);
         }
 
-        return wave;
+        return alienWave;
     }
 
-    private ArrayList<GameObject> generateStreakerAlien(int speed, int health, int hitPoints){
-        ArrayList<GameObject> wave = new ArrayList<>();
+    private AlienWave generateStreakerAlien(int speed, int health, int hitPoints){
+        AlienWave alienWave = new AlienWave();
 
-        wave.add(new StreakerAlien(speed, health, hitPoints, gameObjectManager));
+        alienWave.addGameObject(new StreakerAlien(speed, health, hitPoints, gameObjectManager, alienWave));
 
-        return wave;
+        return alienWave;
     }
 
-    private ArrayList<GameObject> generateHunterAlien(int speed, int health, int hitPoints){
-        ArrayList<GameObject> wave = new ArrayList<>();
+    private AlienWave generateHunterAlien(int speed, int health, int hitPoints){
+        AlienWave alienWave = new AlienWave();
 
-        wave.add(new HunterAlien(speed, health, hitPoints, gameObjectManager));
+        alienWave.addGameObject(new HunterAlien(speed, health, hitPoints, gameObjectManager, alienWave));
 
-        return wave;
+        return alienWave;
     }
 
-    public ArrayList<GameObject> getNextWave(){
-        if (waveNumber+1 < waves.size()) {
+    public AlienWave getNextWave(){
+        if (waveNumber+1 < alienWaves.size()) {
             waveNumber++;
-            return waves.get(waveNumber);
+            return alienWaves.get(waveNumber);
         }else{
             return null;
         }

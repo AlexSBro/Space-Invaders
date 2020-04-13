@@ -2,6 +2,7 @@ package SpaceInvaders.GameObjects;
 
 import SpaceInvaders.Game.GameObjectManager;
 import SpaceInvaders.Game.Settings;
+import SpaceInvaders.Game.AlienWave;
 
 public class Alien extends GameObject {
 
@@ -14,16 +15,18 @@ public class Alien extends GameObject {
     protected boolean moveRight;
     protected boolean moveLeft;
 
+    private AlienWave alienWave;
 
-
-    public Alien(int x, int y, int width, int height, int speed, int health, int hitPoints, GameObjectManager gameObjects) {
+    public Alien(int x, int y, int width, int height, int speed, int health, int hitPoints, GameObjectManager gameObjects, AlienWave alienWave) {
         super(x, y, width, height, speed, health, gameObjects);
+        this.alienWave = alienWave;
         this.hitPoints = hitPoints;
         scoreValue = hitPoints;
     }
 
-    public Alien(int width, int height, int speed, int health, int hitPoints, GameObjectManager gameObjects) {
+    public Alien(int width, int height, int speed, int health, int hitPoints, GameObjectManager gameObjects, AlienWave alienWave) {
         super(width, height, speed, health, gameObjects);
+        this.alienWave = alienWave;
         this.hitPoints = hitPoints;
         scoreValue = hitPoints;
     }
@@ -61,9 +64,16 @@ public class Alien extends GameObject {
                     removeSelf();
                     gameObjectManager.addScore(scoreValue);
                 }
+                //This is removing the projectile
                 gameObject.removeSelf();
             }
         }
+    }
+
+    @Override
+    public void removeSelf() {
+        super.removeSelf();
+        alienWave.remove(this);
     }
 
     public int getHitPoints() {

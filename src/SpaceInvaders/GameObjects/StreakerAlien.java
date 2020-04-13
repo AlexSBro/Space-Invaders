@@ -1,5 +1,6 @@
 package SpaceInvaders.GameObjects;
 
+import SpaceInvaders.Game.AlienWave;
 import SpaceInvaders.Utilities.ColorBuilder;
 import SpaceInvaders.Game.GameObjectManager;
 import SpaceInvaders.Game.Settings;
@@ -9,8 +10,8 @@ import java.util.Random;
 
 public class StreakerAlien extends Alien {
 
-    public StreakerAlien(int speed, int health, int hitPoints, GameObjectManager gameObjects) {
-        super(48, 48, speed, health, hitPoints, gameObjects);
+    public StreakerAlien(int speed, int health, int hitPoints, GameObjectManager gameObjects, AlienWave alienWave) {
+        super(48, 48, speed, health, hitPoints, gameObjects, alienWave);
 
         this.y = 0;
 

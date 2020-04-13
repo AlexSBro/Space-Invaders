@@ -42,9 +42,9 @@ public class GameObjectManager {
     }
 
     public void getNextWave(){
-        ArrayList<GameObject> nextWave = waveManager.getNextWave();
-        if (nextWave != null) {
-            gameObjects.addAll(nextWave);
+        AlienWave nextAlienWave = waveManager.getNextWave();
+        if (nextAlienWave != null) {
+            gameObjects.addAll(nextAlienWave.getAliens());
         }
 
     }
@@ -94,7 +94,6 @@ public class GameObjectManager {
     public boolean isFireShot() {
         return fireShot;
     }
-
     public void fireShot(boolean fireShot){
 
         if(player.getHealth() != 0){

@@ -1,5 +1,6 @@
 package SpaceInvaders.GameObjects;
 
+import SpaceInvaders.Game.AlienWave;
 import SpaceInvaders.Game.GameObjectManager;
 import SpaceInvaders.Game.Settings;
 
@@ -9,8 +10,8 @@ public class Letter extends Alien {
 
     char letter = 'a';
 
-    public Letter(int x, int y, int width, int height, int speed, int health, int hitPoints, GameObjectManager gameObjects, char letter) {
-        super(x, y, 35, 40, speed, health, hitPoints, gameObjects);
+    public Letter(int x, int y, int width, int height, int speed, int health, int hitPoints, GameObjectManager gameObjects, AlienWave alienWave, char letter) {
+        super(x, y, 35, 40, speed, health, hitPoints, gameObjects, alienWave);
         this.letter = letter;
     }
 

@@ -1,5 +1,6 @@
 package SpaceInvaders.GameObjects;
 
+import SpaceInvaders.Game.AlienWave;
 import SpaceInvaders.Utilities.ColorBuilder;
 import SpaceInvaders.Game.GameObjectManager;
 import SpaceInvaders.Game.Settings;
@@ -8,8 +9,8 @@ import java.awt.*;
 
 public class BasicAlien extends Alien {
 
-    public BasicAlien(int x, int y, int speed, int health, int hitPoints, GameObjectManager gameObjectManager){
-        super(x, y, 32, 32, speed, health, hitPoints, gameObjectManager);
+    public BasicAlien(int x, int y, int speed, int health, int hitPoints, GameObjectManager gameObjectManager, AlienWave alienWave){
+        super(x, y, 32, 32, speed, health, hitPoints, gameObjectManager, alienWave);
 
         this.initialX = x;
         this.initialY = y;
